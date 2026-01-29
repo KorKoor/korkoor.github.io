@@ -580,68 +580,42 @@ footer {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
-/* --- MENÚ HAMBURGUESA (MÓVIL) --- */
-
-/* Por defecto (Escritorio) ocultamos el botón */
-.hamburger {
-    display: none;
-    cursor: pointer;
+/* --- BOTÓN MUNDO INTERNO (EN PERFIL) --- */
+.btn-internal {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    color: #3E2723;
+    border: 2px solid #3E2723;
+    padding: 12px 30px;
+    border-radius: 50px; /* Bordes muy redondos */
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    background-color: #3E2723; /* Color Café */
+.btn-internal i {
+    font-size: 1.2rem;
 }
 
-/* ESTILOS PARA MÓVIL (Max 768px) */
-@media (max-width: 768px) {
-    /* 1. Mostrar el botón hamburguesa */
-    .hamburger {
-        display: block;
-        z-index: 1001; /* Por encima del menú */
-    }
+.btn-internal:hover {
+    background-color: #3E2723;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(62, 39, 35, 0.15);
+}
 
-    /* 2. Animación de la hamburguesa a "X" cuando está activo */
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+/* Efecto pulsante sutil para llamar la atención */
+.btn-internal:hover i {
+    animation: pulse 1s infinite;
+}
 
-    /* 3. El Menú Deslizante */
-    .nav-menu {
-        position: fixed;
-        left: -100%; /* Escondido a la izquierda */
-        top: 70px; /* Debajo de la navbar */
-        gap: 0;
-        flex-direction: column;
-        background-color: #FDFBF7; /* Fondo Crema */
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-        padding: 20px 0;
-        z-index: 1000;
-    }
-
-    .nav-menu.active {
-        left: 0; /* Aparece */
-    }
-
-    .nav-menu li {
-        margin: 16px 0;
-    }
-
-    /* Esconder buscador en móvil si estorba, o ajustarlo */
-    .search-box {
-        display: none; /* Opcional: Ocultar buscador en móvil para limpiar espacio */
-    }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
