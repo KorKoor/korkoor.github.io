@@ -404,4 +404,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll(); 
+    function setupMobileMenu() {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Cerrar menú al dar clic en un enlace
+        document.querySelectorAll(".nav-menu li a").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    }
+}
 });
