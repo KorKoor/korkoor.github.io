@@ -1,37 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korkoor - Dominio verificado</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9fafc;
-      color: #333;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      color: #2c3e50;
-    }
-    p {
-      font-size: 1.2em;
-      margin-top: 20px;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #777;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Portafolio</title>
+    <style>
+        /* --- ESTILOS GENERALES Y COLORES --- */
+        :root {
+            --bg-color: #FDFBF7;       /* Crema suave */
+            --text-main: #4E342E;      /* Café Espresso */
+            --text-accent: #8D6E63;    /* Mocha */
+            --cursor-color: #A1887F;   /* Café claro */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif; /* Puedes cambiar por una fuente más elegante como 'Montserrat' */
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* --- SECCIÓN HERO --- */
+        .hero-container {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .greeting {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .my-name {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+            /* Un pequeño degradado sutil en el texto del nombre */
+            background: -webkit-linear-gradient(45deg, #4E342E, #8D6E63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .role-wrapper {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            font-weight: 600;
+            min-height: 60px; /* Evita saltos de altura */
+        }
+
+        /* El texto que cambia */
+        .dynamic-text {
+            color: var(--text-main);
+        }
+
+        /* El cursor que parpadea */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--text-main);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .my-name { font-size: 3rem; }
+            .role-wrapper { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-  <h1>✅ Dominio verificado</h1>
-  <p>Este sitio está activo y sirve archivos de verificación como <code>app-ads.txt</code> y <code>assetlinks.json</code>.</p>
 
-  <footer>
-    &copy; 2026 Korkoor | Publicado con GitHub Pages
-  </footer>
+    <section class="hero-container">
+        <p class="greeting">Hello, I am</p>
+        <h1 class="my-name">TU NOMBRE</h1>
+        
+        <div class="role-wrapper">
+            <span class="dynamic-text"></span><span class="cursor">&nbsp;</span>
+        </div>
+    </section>
+
+    <script>
+        // --- CONFIGURACIÓN DEL EFECTO DE ESCRITURA ---
+        
+        // 1. Las frases que quieres que se escriban y borren
+        const words = [
+            "Software Developer", 
+            "Mobile App Creator", 
+            "Backend Engineer",
+            "Problem Solver"
+        ];
+
+        const dynamicText = document.querySelector(".dynamic-text");
+        
+        // Variables de control
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        const typeEffect = () => {
+            const currentWord = words[wordIndex];
+            const currentChar = currentWord.substring(0, charIndex);
+            
+            dynamicText.textContent = currentChar;
+            dynamicText.classList.add("stop-blinking");
+
+            if (!isDeleting && charIndex < currentWord.length) {
+                // Si está escribiendo
+                charIndex++;
+                setTimeout(typeEffect, 100); // Velocidad de escritura
+            } else if (isDeleting && charIndex > 0) {
+                // Si está borrando
+                charIndex--;
+                setTimeout(typeEffect, 50); // Velocidad de borrado (más rápido)
+            } else {
+                // Fin de la palabra o fin del borrado
+                isDeleting = !isDeleting;
+                dynamicText.classList.remove("stop-blinking");
+                
+                // Si terminó de escribir, espera un poco antes de borrar
+                // Si terminó de borrar, pasa a la siguiente palabra
+                wordIndex = !isDeleting ? (wordIndex + 1) % words.length : wordIndex;
+                setTimeout(typeEffect, 1200); // Tiempo de pausa antes de borrar/escribir de nuevo
+            }
+        }
+
+        // Iniciar la animación
+        typeEffect();
+    </script>
 </body>
 </html>
