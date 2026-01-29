@@ -619,3 +619,25 @@ footer {
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
+/* Nuevo botón secundario para "Ver Sitio" */
+.details-btn {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 8px;
+    width: 100%; 
+    text-align: center;
+    background: transparent; 
+    border: 2px solid #8D6E63; /* Borde café claro */
+    color: #8D6E63;
+    padding: 10px; 
+    border-radius: 8px;
+    text-decoration: none; 
+    font-weight: 700; 
+    margin-bottom: 15px; /* Espacio antes del formulario */
+    transition: 0.3s;
+}
+.details-btn:hover { 
+    background: #8D6E63; 
+    color: white; 
+}
