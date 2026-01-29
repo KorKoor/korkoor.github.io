@@ -7,7 +7,7 @@ export class ParDosCarousel {
         this.nextBtn = document.querySelector('.next-btn');
         
         this.images = [
-            'Menu.png', 'Recrods.png', 'AWARDS.png', 'Custom.png', 
+            'Menu.png', 'Records.png', 'AWARDS.png', 'Custom.png', 
             'Custom 2.png', 'ModelSelector.png', 'Campaign.png', 'Gameplay.png'
         ];
         
