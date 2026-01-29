@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.korkoor.pardos",
+      "sha256_cert_fingerprints": [
+        "EC:9E:A4:A9:F3:A5:A7:F0:D2:8D:ED:1B:EB:0F:AD:6C:D6:CA:39:59:83:03:4C:29:C1:D1:3F:2A:A3:FB:5C:B5"
+      ]
+    }
+  }
+]
