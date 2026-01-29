@@ -1,69 +1,196 @@
-* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
+:root {
+    --bg-color: #FDFBF7;
+    --text-main: #4E342E;
+    --text-secondary: #5D4037;
+    --accent: #A1887F;         /* Mocha */
+    --highlight: #EFEBE9;      /* Fondo suave para tarjetas */
+    --card-bg: #FFFFFF;
 }
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-font-family: system-ui, sans-serif;
-background: #0f172a;
-color: #e5e7eb;
-line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
 
-
-.header {
-padding: 3rem 1rem;
-text-align: center;
-background: #020617;
+/* --- LAYOUT GENERAL --- */
+section {
+    padding: 100px 20px; /* Más aire = Más elegante */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-
-.header h1 {
-font-size: 2.2rem;
+/* --- HERO SECTION PROFESIONAL (Split Layout) --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
+    padding: 40px;
+    position: relative;
 }
 
-
-.section {
-padding: 2rem 1.5rem;
-max-width: 900px;
-margin: auto;
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+    gap: 50px; /* Espacio entre foto y texto */
 }
 
-
-.section h2 {
-margin-bottom: 1rem;
-color: #38bdf8;
+/* Texto Hero */
+.hero-text {
+    flex: 1;
+    text-align: left; /* Alineado a la izquierda es más pro en desktop */
 }
 
+.greeting { font-size: 1.2rem; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
 
-#skills-list {
-list-style: none;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 0.5rem;
+.my-name {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 10px 0;
+    background: -webkit-linear-gradient(45deg, #4E342E, #8D6E63);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+.role-wrapper { font-size: 1.8rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 30px; }
+.cursor { display: inline-block; width: 3px; background-color: var(--accent); animation: blink 1s infinite; }
 
-.skill {
-background: #020617;
-padding: 0.75rem;
-border-radius: 6px;
+/* NUEVO: Bloque de Contacto */
+.contact-info-block {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+    color: var(--text-secondary);
 }
 
-
-.project {
-background: #020617;
-padding: 1rem;
-margin-bottom: 1rem;
-border-radius: 8px;
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+.info-item i { color: var(--accent); width: 20px; text-align: center; }
+.info-item a { color: var(--text-main); text-decoration: none; font-weight: 500; transition: 0.3s; }
+.info-item a:hover { color: var(--accent); }
 
-.footer {
-text-align: center;
-padding: 1.5rem;
-font-size: 0.9rem;
-opacity: 0.7;
+/* Redes Sociales */
+.social-links { display: flex; gap: 20px; }
+.social-icon { font-size: 1.8rem; color: var(--text-main); transition: 0.3s; }
+.social-icon:hover { color: var(--accent); transform: translateY(-3px); }
+
+/* FOTO DE PERFIL (Estilo Senior) */
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
+
+.profile-pic {
+    width: 350px;
+    height: 350px;
+    object-fit: cover; /* Asegura que la foto no se estire */
+    border-radius: 50%;
+    border: 8px solid white;
+    box-shadow: 0 20px 40px rgba(78, 52, 46, 0.2);
+    position: relative;
+    z-index: 2;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Círculo decorativo detrás */
+.blob-bg {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    background-color: var(--highlight);
+    border-radius: 50%;
+    z-index: 1;
+    transform: translate(10px, 10px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --- SECCIONES COMUNES --- */
+h2.section-title { font-size: 2.8rem; margin-bottom: 60px; text-align: center; color: var(--text-main); position: relative; }
+h2.section-title::after { content: ''; display: block; width: 80px; height: 4px; background-color: var(--accent); margin: 15px auto 0; border-radius: 2px; }
+
+.about-content { font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8; }
+.about-content p { margin-bottom: 20px; }
+
+.projects-grid, .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+/* Cards generales */
+.project-card { background: var(--card-bg); border: 1px solid var(--highlight); border-radius: 16px; padding: 30px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+.project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(78, 52, 46, 0.1); border-color: var(--accent); }
+.project-title { font-size: 1.4rem; color: var(--text-main); margin-bottom: 10px; }
+.project-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6; }
+
+/* Skills Tags */
+.skill-category h3 { color: var(--accent); margin-bottom: 15px; border-bottom: 2px solid var(--highlight); padding-bottom: 5px; }
+.skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag { background-color: var(--highlight); color: var(--text-main); padding: 6px 14px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
+
+/* Botones */
+.project-link-btn { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: var(--text-main); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+.project-link-btn:hover { background-color: var(--accent); }
+
+/* --- NUEVA SECCIÓN: LADO HUMANO --- */
+.human-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.human-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.human-card h3 { font-size: 1.8rem; margin-bottom: 25px; color: var(--text-main); display: flex; align-items: center; gap: 10px; }
+
+/* Lista de Soft Skills */
+.soft-skills ul { list-style: none; padding: 0; }
+.soft-skills li { margin-bottom: 15px; font-size: 1.05rem; padding-left: 20px; border-left: 3px solid var(--accent); }
+
+/* Grid de Hobbies */
+.hobbies-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.hobby-item { display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--highlight); padding: 20px; border-radius: 12px; transition: 0.3s; }
+.hobby-item:hover { background: #E7E0D8; transform: scale(1.02); }
+.hobby-item i { font-size: 2rem; color: var(--accent); margin-bottom: 10px; }
+.hobby-item span { font-weight: 700; color: var(--text-main); }
+.hobby-item small { font-size: 0.8rem; color: var(--text-secondary); }
+
+/* --- RESPONSIVE (Móvil) --- */
+@media (max-width: 900px) {
+    .hero-container { flex-direction: column-reverse; text-align: center; gap: 30px; }
+    .hero-text { text-align: center; }
+    .contact-info-block { align-items: center; } /* Centrar info en móvil */
+    .social-links { justify-content: center; }
+    .profile-pic, .blob-bg { width: 250px; height: 250px; }
+    .my-name { font-size: 3rem; }
+}
+
+/* Scroll reveal y Flecha */
+.scroll-down { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 2rem; color: var(--accent); animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -10px); } 60% { transform: translate(-50%, -5px); } }
+
+.reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
