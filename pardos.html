@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParDos: Zen Math Puzzle | Sitio Oficial</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="css/pardos.css"> 
+</head>
+<body class="pardos-body">
+
+    <div class="zen-bg"></div>
+
+    <div id="pardos-background" class="pardos-bg" style="z-index: 0;"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">CG.</a>
+            <div class="nav-links">
+                <a href="#features">Características</a>
+                <a href="#gallery">Galería</a>
+                <a href="index.html#apps" class="back-link"><i class="fas fa-arrow-left"></i> Volver al Portafolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pardos-hero">
+        <div class="hero-content">
+            <div class="app-icon-large floating-anim">
+                <img src="assets/images/ParDos/Icon.png" alt="ParDos Icon" onerror="this.src='https://placehold.co/100x100?text=ParDos'">
+            </div>
+            
+            <h1 class="pardos-title">ParDos</h1>
+            <p class="pardos-subtitle">Zen Math Puzzle</p>
+            
+            <p class="pardos-desc">
+                ¿Buscas un reto que ponga a prueba tu lógica sin el estrés de los juegos convencionales?
+                Bienvenido a la experiencia definitiva donde las matemáticas se encuentran con el diseño Zen.
+            </p>
+            
+            <div class="cta-group">
+                <a href="https://play.google.com/store/apps/details?id=com.example.orbblaze" target="_blank" class="store-btn primary-cta">
+                    <i class="fab fa-google-play"></i>
+                    <div>
+                        <span>Descárgalo en</span>
+                        <strong>Google Play</strong>
+                    </div>
+                </a>
+                
+                <div class="qr-box">
+                    <i class="fas fa-qrcode"></i>
+                    <span>Escanea para instalar</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="gallery" class="showcase-section">
+        <div class="section-header">
+            <h2>Galería del Juego</h2>
+            <p>Interfaz limpia. Sin distracciones.</p>
+        </div>
+        
+        <div class="carousel-wrapper">
+            <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-container">
+                <div class="carousel-track" id="pardos-track">
+                    </div>
+            </div>
+            <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-indicators" id="pardos-indicators"></div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="features-container">
+            
+            <div class="feature-card zen-style">
+                <i class="fas fa-leaf"></i>
+                <h3>Estética Zen</h3>
+                <p>Paleta de colores café pastel diseñada para reducir la fatiga visual. Un refugio mental.</p>
+            </div>
+
+            <div class="feature-card achievements-style">
+                <i class="fas fa-trophy"></i>
+                <h3>80 Logros Únicos</h3>
+                <p>Desde retos básicos hasta nivel experto. Colecciona medallas y demuestra tu dominio.</p>
+            </div>
+
+            <div class="feature-card privacy-style">
+                <i class="fas fa-user-shield"></i>
+                <h3>Privacidad Primero</h3>
+                <p>No recopilamos datos personales. Tu progreso se queda en tu dispositivo.</p>
+            </div>
+
+            <div class="feature-card tech-style">
+                <i class="fas fa-code"></i>
+                <h3>100% Jetpack Compose</h3>
+                <p>Rendimiento nativo fluido y tiempos de carga instantáneos.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="audience-section">
+        <h2>¿Para quién es ParDos?</h2>
+        <div class="audience-grid">
+            <div class="audience-item">
+                <div class="icon-circle"><i class="fas fa-graduation-cap"></i></div>
+                <h4>Estudiantes</h4>
+                <p>Agilidad mental y práctica numérica.</p>
+            </div>
+            <div class="audience-item">
+                <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
+                <h4>Profesionales</h4>
+                <p>Un descanso productivo entre tareas.</p>
+            </div>
+            <div class="audience-item">
+                <div class="icon-circle"><i class="fas fa-puzzle-piece"></i></div>
+                <h4>Amantes de Puzzles</h4>
+                <p>Si te gusta el Sudoku, amarás esto.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>Entrena tu cerebro hoy</h2>
+        <p>La lógica puede ser la experiencia más relajante de tu día.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.example.orbblaze" target="_blank" class="store-btn large-btn">
+            <i class="fab fa-google-play"></i>
+            Instalar Gratis
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 ParDos by <strong>Carlos García Huerta</strong>.</p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="mailto:charliegarcia.it@gmail.com">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { ParDosCarousel } from './js/pardos.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            const showcase = new ParDosCarousel('pardos-track');
+            showcase.init();
+        });
+    </script>
+</body>
+</html>

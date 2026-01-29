@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Mundo Interno | Carlos García</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/personal.css">
+</head>
+<body class="personal-page-body">
+
+    <div class="noise-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">CG.</a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#projects">Proyectos</a></li>
+                <li><a href="#" class="active-link">Mundo Interno</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="personal-wrapper">
+        
+        <header class="personal-header">
+            <h1>Lo que soy cuando nadie mira</h1>
+            <p class="subtitle">Este espacio no intenta idealizarme. Es una colección de mis obsesiones, mi lealtad y mi motor interno.</p>
+        </header>
+
+        <div id="personal-container"></div>
+
+    </main>
+
+    <script type="module">
+        import { PersonalLife } from './js/personal.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const myLife = new PersonalLife('personal-container');
+            myLife.render();
+        });
+    </script>
+
+</body>
+</html>

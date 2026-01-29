@@ -5,14 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carlos García Huerta | Software Developer</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .app-card { background: #fff; border: 1px solid #EFEBE9; border-radius: 16px; padding: 30px; position: relative; overflow: hidden; }
+        .app-badge { position: absolute; top: 15px; right: 15px; background: #EFEBE9; color: #5D4037; padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
+        .download-btn { display: block; width: 100%; text-align: center; background: #3E2723; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 15px; transition: 0.3s; }
+        .download-btn:hover { background: #5D4037; }
+        .pardos-gate input { width: 100%; padding: 10px; border: 1px solid #D7CCC8; border-radius: 6px; margin-bottom: 10px; }
+        .playstore-btn { background: #00875F; }
+        .playstore-btn:hover { background: #006042; }
+        .beta-warning { font-size: 0.85rem; color: #D32F2F; background: #FFEBEE; padding: 10px; border-radius: 6px; margin-top: 10px; margin-bottom: 10px; display: flex; gap: 8px; align-items: start; }
+    </style>
 </head>
 <body>
 
+    <div id="pardos-background" class="pardos-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">CG.</a> 
+            <ul class="nav-menu">
+                <li><a href="#about">Perfil</a></li>
+                <li><a href="pardos.html">ParDos</a></li>
+                <li><a href="personal.html">Mundo Interno</a></li>
+                <li><a href="#apps">Apps</a></li>
+                <li><a href="#skills">Stack</a></li>
+                <li><a href="#projects">GitHub</a></li>
+            </ul>
+
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar tecnología...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
     <header class="hero">
         <div class="hero-container">
-            
-            <div class="hero-text">
+            <div class="hero-text slide-left reveal">
                 <p class="greeting">Hello, I am</p>
                 <h1 class="my-name">Carlos García Huerta</h1>
                 
@@ -23,7 +57,7 @@
                 <div class="contact-info-block">
                     <div class="info-item">
                         <i class="fas fa-graduation-cap"></i>
-                        <span>Egresado, Universidad Autónoma de Aguascalientes</span>
+                        <span>Lic. en Informática y Tecnologías Computacionales, UAA</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -31,7 +65,7 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <a href="mailto:contacto@charliegarcia.dev">contacto: charliegarcia.it@gmail.com</a>
+                        <a href="mailto:charliegarcia.it@gmail.com">charliegarcia.it@gmail.com</a>
                     </div>
                 </div>
 
@@ -42,84 +76,167 @@
                 </div>
             </div>
 
-            <div class="hero-image-container">
-                <img src="assets/images/Yo.jpeg" alt="Tu Foto de Perfil" class="profile-pic">
+            <div class="hero-image-container slide-right reveal">
+                <img src="assets/images/Yo.jpeg" alt="Carlos García Huerta" class="profile-pic">
                 <div class="blob-bg"></div>
             </div>
-
         </div>
-
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+        <div class="scroll-down"><i class="fas fa-chevron-down"></i></div>
     </header>
 
-    <section id="about" class="full-screen-section reveal">
+    <section id="about" class="reveal scale-up">
         <h2 class="section-title">Perfil Profesional</h2>
         <div class="about-content">
             <p>
-                Desarrollador de software con una visión integral, capaz de orquestar soluciones desde el bajo nivel de <strong>C++</strong> hasta interfaces modernas en <strong>React Native</strong>. Mi enfoque combina la precisión técnica con la sensibilidad del diseño de producto.
+                Más que un programador, soy un <strong>arquitecto de soluciones</strong>. Mi formación en la <strong>UAA</strong> me dio las bases, pero mi curiosidad me dio el resto. Capaz de orquestar soluciones desde el bajo nivel de <strong>C++</strong> hasta interfaces modernas en <strong>React Native</strong>.
             </p>
             <p>
-                Me apasiona el impacto que la <strong>Inteligencia Artificial</strong> está teniendo en el desarrollo moderno, integrando herramientas de IA en mi flujo de trabajo diario.
+                Mi enfoque combina la precisión técnica con la sensibilidad del diseño de producto. Actualmente, me obsesiona el impacto que la <strong>Inteligencia Artificial</strong> tiene en el desarrollo, usándola no para escribir código por mí, sino para potenciar lo que puedo crear.
             </p>
         </div>
     </section>
 
-    <section id="skills" class="reveal">
+    <section id="apps" class="reveal slide-left">
+        <h2 class="section-title">Productos & Apps</h2>
+        <div class="apps-grid">
+            
+            <div class="app-card">
+                <span class="app-badge">Android Nativo</span>
+                <h3><i class="fas fa-heartbeat" style="color: #D32F2F;"></i> ACIF Hipertensión</h3>
+                <p style="color: #5D4037; font-size: 0.9rem; margin-top: 10px;">
+                    Herramienta médica para el control y registro de presión arterial. Genera reportes locales y gráficas de tendencia.
+                </p>
+                <a href="https://www.mediafire.com/file/8qqyd4hrw1ynlrv/ACIF_Hipertension.apk/file" class="download-btn" download>
+                    <i class="fab fa-android"></i> Descargar APK
+                </a>
+            </div>
+
+            <div class="app-card">
+                <span class="app-badge">HealthTech</span>
+                <h3><i class="fas fa-tint" style="color: #1976D2;"></i> ACIF Diabetes</h3>
+                <p style="color: #5D4037; font-size: 0.9rem; margin-top: 10px;">
+                    Gestión de glucosa y fases de tratamiento. Enfocada en la accesibilidad para pacientes mayores.
+                </p>
+                <a href="https://www.mediafire.com/file/j9kd47buqd2lgxw/ACIF-Diabetes.apk/file" class="download-btn" download>
+                    <i class="fab fa-android"></i> Descargar APK
+                </a>
+            </div>
+
+            <div class="app-card" style="border-color: #8D6E63; background: #FFF8F6;">
+                <span class="app-badge" style="background: #3E2723; color: white;">Google Play Beta</span>
+                <h3><i class="fas fa-puzzle-piece" style="color: #8D6E63;"></i> ParDos: Zen Math</h3>
+                <p style="color: #5D4037; font-size: 0.9rem; margin-top: 10px; margin-bottom: 15px;">
+                    Puzzle lógico estilo 2048 con diseño 'Juicy'. Disponible en Google Play (Acceso Anticipado).
+                </p>
+
+                <div id="pardos-form-container" class="pardos-gate">
+                    <input type="email" id="tester-email" placeholder="Tu correo de Google Play..." required>
+                    <button id="btn-register-tester" class="download-btn">
+                        <i class="fas fa-user-plus"></i> Solicitar Acceso
+                    </button>
+                </div>
+
+                <div id="pardos-link-container" style="display: none;">
+                    <div class="beta-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span><strong>Importante:</strong> Debo darte de alta manualmente en la consola antes de que el link funcione.</span>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=com.example.orbblaze" target="_blank" class="download-btn playstore-btn">
+                        <i class="fab fa-google-play"></i> Ir a Google Play
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="reveal slide-right">
         <h2 class="section-title">Stack Tecnológico</h2>
         <div id="skills-container" class="skills-grid"></div>
     </section>
 
-    <section id="projects" class="reveal">
-        <h2 class="section-title">Proyectos Destacados</h2>
+    <section id="projects" class="reveal scale-up">
+        <h2 class="section-title">Repositorios Destacados</h2>
         <div id="projects-container" class="projects-grid"></div>
     </section>
 
-    <section id="human-side" class="reveal">
-        <h2 class="section-title">Más allá del Código</h2>
-        
-        <div class="human-grid">
-            <div class="human-card soft-skills">
-                <h3><i class="fas fa-brain"></i> Soft Skills</h3>
-                <ul>
-                    <li><strong>Pensamiento Crítico:</strong> Cuestiono el "por qué" antes de escribir el "cómo".</li>
-                    <li><strong>Resiliencia:</strong> Veo los errores como datos para iterar, no como fracasos.</li>
-                    <li><strong>Comunicación:</strong> Traduzco problemas técnicos a lenguaje humano.</li>
-                    <li><strong>Aprendizaje Autodidacta:</strong> Consumidor voraz de documentación y tutoriales.</li>
-                </ul>
-            </div>
-
-            <div class="human-card interests">
-                <h3><i class="fas fa-heart"></i> Intereses & Pasiones</h3>
-                <div class="hobbies-list">
-                    <div class="hobby-item">
-                        <i class="fas fa-robot"></i>
-                        <span>IA & LLMs</span>
-                        <small>Investigación constante</small>
+    <section class="reveal scale-up">
+        <div class="github-section">
+            <i class="fab fa-github github-bg-icon"></i>
+            <div class="github-content">
+                <h2>Explora todo mi Código</h2>
+                <p>Mis mejores experimentos, scripts y proyectos open source viven aquí.</p>
+                
+                <div class="github-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Repositorios</span>
                     </div>
-                    <div class="hobby-item">
-                        <i class="fas fa-music"></i>
-                        <span>Música</span>
-                        <small>Tocar instrumentos y escuchar</small>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Apps Publicadas</span>
                     </div>
-                    <div class="hobby-item">
-                        <i class="fab fa-youtube"></i>
-                        <span>Tech Content</span>
-                        <small>Consumidor de Edutainment</small>
-                    </div>
-                    <div class="hobby-item">
-                        <i class="fas fa-code"></i>
-                        <span>Coding</span>
-                        <small>Incluso por diversión</small>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Pasión</span>
                     </div>
                 </div>
+
+                <a href="https://github.com/KorKoor?tab=repositories" target="_blank" class="github-btn-large">
+                    Ver Perfil Completo en GitHub <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
+    <section id="human-side" class="reveal slide-left">
+        <h2 class="section-title">Soft Skills & Intereses</h2>
+        <div class="soft-skills-grid">
+            <div class="soft-card">
+                <i class="fas fa-brain"></i>
+                <h3>Pensamiento Analítico</h3>
+                <p>No solo escribo código; desgloso problemas complejos en componentes lógicos manejables.</p>
+            </div>
+            <div class="soft-card">
+                <i class="fas fa-sync-alt"></i>
+                <h3>Adaptabilidad</h3>
+                <p>Capacidad probada para saltar entre tecnologías (C++ a React Native) según lo requiera el proyecto.</p>
+            </div>
+             <div class="soft-card">
+                <i class="fas fa-users"></i>
+                <h3>Comunicación Técnica</h3>
+                <p>Habilidad para traducir conceptos técnicos complejos a lenguaje claro.</p>
+            </div>
+             <div class="soft-card">
+                <i class="fas fa-rocket"></i>
+                <h3>Resiliencia</h3>
+                <p>Persistencia ante errores y bugs difíciles. Veo el fallo como un dato para iterar.</p>
+            </div>
+        </div>
+        
+        <div class="interests-bar">
+            <span><i class="fas fa-robot"></i> IA & LLMs</span>
+            <span><i class="fas fa-music"></i> Músico</span>
+            <span><i class="fas fa-gamepad"></i> Game Dev</span>
+            <span><i class="fas fa-video"></i> Gamer </span>
+        </div>
+    </section>
+
+    <button id="play-demo-btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 100; padding: 15px 25px; background: #3E2723; color: white; border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-weight: bold; transition: transform 0.2s;">
+        <i class="fas fa-gamepad"></i> Jugar ParDos Demo
+    </button>
+
+    <div id="game-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center;">
+        <div style="background: #FDFBF7; padding: 20px; border-radius: 12px; position: relative;">
+            <button id="close-game" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+            <h2 style="text-align: center; color: #3E2723; margin-bottom: 15px;">ParDos Mini</h2>
+            <p style="text-align: center; margin-bottom: 10px;">Usa las flechas del teclado</p>
+            <div id="pardos-game-container"></div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Carlos García Huerta | Licenciatura Informatica y Tecnologias Comptucionales. UAA</p>
+        <p>&copy; 2026 Carlos García Huerta | Lic. En Informática y Tecnologías Computacionales de la UAA</p>
     </footer>
 
     <script type="module" src="js/main.js"></script>
