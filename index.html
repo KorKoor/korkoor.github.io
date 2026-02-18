@@ -25,7 +25,7 @@
         .playstore-btn:hover { background: #006042; }
         .beta-warning { font-size: 0.85rem; color: #D32F2F; background: #FFEBEE; padding: 10px; border-radius: 6px; margin-top: 10px; margin-bottom: 10px; display: flex; gap: 8px; align-items: start; }
 
-        /* --- REDISEÑO DE VISUALIZADOR (Monitor Estelar) --- */
+        /* --- REDISEÑO DE VISUALIZADOR (Monitor HD Escalado) --- */
         .preview-box {
             width: 100%;
             height: 180px;
@@ -42,11 +42,11 @@
         }
 
         .preview-iframe {
-            width: 1280px; /* Ancho virtual HD */
-            height: 720px; /* Alto virtual HD */
+            width: 1280px; /* Lienzo HD */
+            height: 720px; /* Lienzo HD */
             border: none;
             pointer-events: none; 
-            transform: scale(0.24); 
+            transform: scale(0.24); /* Escala la web real al tamaño de la card */
             transform-origin: center;
             opacity: 0.85;
             transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -258,7 +258,7 @@
                     <iframe src="https://stream.korwork.org/OfflineScreen.html" class="preview-iframe"></iframe>
                 </div>
                 <h3>Offline Screen</h3>
-                <p style="color: #5D4037; font-size: 0.9rem;">Animación de galaxia con partículas y texto dinámico para finalizacion del stream.</p>
+                <p style="color: #5D4037; font-size: 0.9rem;">Animación de galaxia con partículas y texto dinámico para finalización del stream.</p>
                 <a href="https://stream.korwork.org/OfflineScreen.html" class="download-btn" target="_blank">Visualizar Layout</a>
             </div>
 
@@ -338,7 +338,7 @@
                 <h3>Comunicación Técnica</h3>
                 <p>Habilidad para traducir conceptos técnicos complejos a lenguaje claro.</p>
             </div>
-             <div class="soft-card">
+            <div class="soft-card">
                 <i class="fas fa-rocket"></i>
                 <h3>Resiliencia</h3>
                 <p>Persistencia ante errores y bugs difíciles. Veo el fallo como un dato para iterar.</p>
@@ -371,11 +371,11 @@
     <section id="contact" class="reveal scale-up">
         <h2 class="section-title">Contacta conmigo</h2>
         <div class="contact-form-container">
-            <form action="https://formspree.io/f/charliegarcia.it@gmail.com" method="POST">
+            <form action="https://formspree.io/f/mwvnqkpg" method="POST">
                 <input type="text" name="name" placeholder="Tu Nombre Completo" required>
                 <input type="email" name="_replyto" placeholder="Tu Correo de Contacto" required>
                 <textarea name="message" rows="5" placeholder="¿En qué puedo ayudarte?" required></textarea>
-                <input type="hidden" name="_subject" value="Nuevo contacto desde Portafolio">
+                <input type="hidden" name="_subject" value="Nuevo contacto desde KorWork Portafolio">
                 <button type="submit">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
