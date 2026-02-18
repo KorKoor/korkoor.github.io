@@ -1,4 +1,3 @@
-/* --- CLASE PARA LA LANDING PAGE DE PARDOS --- */
 export class ParDosCarousel {
     constructor(trackId) {
         this.track = document.getElementById(trackId);
@@ -18,7 +17,6 @@ export class ParDosCarousel {
     }
 
     init() {
-        // 1. INICIAR FONDO (Crea el div si no existe)
         this.initBackground();
 
         if (!this.track) return;

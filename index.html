@@ -10,15 +10,94 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
+        /* --- ESTILOS ORIGINALES MANTENIDOS --- */
         .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .app-card { background: #fff; border: 1px solid #EFEBE9; border-radius: 16px; padding: 30px; position: relative; overflow: hidden; }
-        .app-badge { position: absolute; top: 15px; right: 15px; background: #EFEBE9; color: #5D4037; padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
+        .app-card { background: #fff; border: 1px solid #EFEBE9; border-radius: 16px; padding: 30px; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .app-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(62, 39, 35, 0.08); border-color: #8D6E63; }
+        .app-badge { position: absolute; top: 15px; right: 15px; background: #EFEBE9; color: #5D4037; padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; z-index: 10; }
         .download-btn { display: block; width: 100%; text-align: center; background: #3E2723; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 15px; transition: 0.3s; }
         .download-btn:hover { background: #5D4037; }
         .pardos-gate input { width: 100%; padding: 10px; border: 1px solid #D7CCC8; border-radius: 6px; margin-bottom: 10px; }
         .playstore-btn { background: #00875F; }
         .playstore-btn:hover { background: #006042; }
         .beta-warning { font-size: 0.85rem; color: #D32F2F; background: #FFEBEE; padding: 10px; border-radius: 6px; margin-top: 10px; margin-bottom: 10px; display: flex; gap: 8px; align-items: start; }
+
+        /* --- REDISEÑO PROFESIONAL DEL VISUALIZADOR --- */
+        .preview-box {
+            width: 100%;
+            height: 180px;
+            background: #030305;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #EFEBE9;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* El truco del escalado para que se vea la web completa en pequeño */
+        .preview-iframe {
+            width: 1280px; /* Ancho virtual HD */
+            height: 720px; /* Alto virtual HD */
+            border: none;
+            pointer-events: none; 
+            transform: scale(0.24); /* Escala la web gigante al tamaño de la caja */
+            transform-origin: center;
+            opacity: 0.8;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .app-card:hover .preview-iframe {
+            transform: scale(0.28); /* Zoom sutil al pasar el mouse */
+            opacity: 1;
+        }
+        /* Overlay de cristal para mejorar la integración */
+        .preview-box::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        /* --- ESTILOS FORMULARIO DE CONTACTO --- */
+        .contact-form-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #FFFFFF;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #EFEBE9;
+            box-shadow: 0 10px 30px rgba(62, 39, 35, 0.05);
+        }
+        .contact-form-container input, .contact-form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #D7CCC8;
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            background: #FDFBF7;
+        }
+        .contact-form-container button {
+            width: 100%;
+            padding: 15px;
+            background: #3E2723;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        .contact-form-container button:hover {
+            background: #5D4037;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(62, 39, 35, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -30,11 +109,12 @@
             <a href="#" class="logo">CG.</a> 
             <ul class="nav-menu">
                 <li><a href="#about">Perfil</a></li>
+                <li><a href="#skills">Stack</a></li>
                 <li><a href="pardos.html">ParDos</a></li>
                 <li><a href="personal.html">Mundo Interno</a></li>
                 <li><a href="#apps">Apps</a></li>
-                <li><a href="#skills">Stack</a></li>
                 <li><a href="#projects">GitHub</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
 
             <div class="search-box">
@@ -102,6 +182,11 @@
         </div>
     </section>
 
+    <section id="skills" class="reveal slide-right">
+        <h2 class="section-title">Stack Tecnológico</h2>
+        <div id="skills-container" class="skills-grid"></div>
+    </section>
+
     <section id="apps" class="reveal slide-left">
         <h2 class="section-title">Productos & Apps</h2>
         <div class="apps-grid">
@@ -157,12 +242,37 @@
                 </div>
             </div>
 
-        </div>
-    </section>
+            <div class="app-card">
+                <span class="app-badge">Stream: Offline</span>
+                <div class="preview-box">
+                    <iframe src="https://stream.korwork.org/OfflineScreen.html" class="preview-iframe"></iframe>
+                </div>
+                <h3>Starting Screen</h3>
+                <p style="color: #5D4037; font-size: 0.9rem;">Animación de galaxia con partículas y texto dinámico para inicio de stream.</p>
+                <a href="https://stream.korwork.org/OfflineScreen.html" class="download-btn">Visualizar Layout</a>
+            </div>
 
-    <section id="skills" class="reveal slide-right">
-        <h2 class="section-title">Stack Tecnológico</h2>
-        <div id="skills-container" class="skills-grid"></div>
+            <div class="app-card">
+                <span class="app-badge">Stream: BRB</span>
+                <div class="preview-box">
+                    <iframe src="https://stream.korwork.org/BRBScreen.html" class="preview-iframe"></iframe>
+                </div>
+                <h3>Be Right Back</h3>
+                <p style="color: #5D4037; font-size: 0.9rem;">Pantalla de pausa con marco transparente para video y chat flotante.</p>
+                <a href="https://stream.korwork.org/BRBScreen.html" class="download-btn">Visualizar Layout</a>
+            </div>
+
+            <div class="app-card">
+                <span class="app-badge">Stream: Online</span>
+                <div class="preview-box">
+                    <iframe src="https://stream.korwork.org/OnlineScreen.html" class="preview-iframe"></iframe>
+                </div>
+                <h3>Main Overlay</h3>
+                <p style="color: #5D4037; font-size: 0.9rem;">Layout principal con integración real de Chat de Twitch vía WebSockets.</p>
+                <a href="https://stream.korwork.org/OnlineScreen.html" class="download-btn">Visualizar Layout</a>
+            </div>
+
+        </div>
     </section>
 
     <section id="projects" class="reveal scale-up">
@@ -200,35 +310,64 @@
     </section>
 
     <section id="human-side" class="reveal slide-left">
-        <h2 class="section-title">Soft Skills & Intereses</h2>
-        <div class="soft-skills-grid">
-            <div class="soft-card">
-                <i class="fas fa-brain"></i>
-                <h3>Pensamiento Analítico</h3>
-                <p>No solo escribo código; desgloso problemas complejos en componentes lógicos manejables.</p>
-            </div>
-            <div class="soft-card">
-                <i class="fas fa-sync-alt"></i>
-                <h3>Adaptabilidad</h3>
-                <p>Capacidad probada para saltar entre tecnologías (C++ a React Native) según lo requiera el proyecto.</p>
-            </div>
-             <div class="soft-card">
-                <i class="fas fa-users"></i>
-                <h3>Comunicación Técnica</h3>
-                <p>Habilidad para traducir conceptos técnicos complejos a lenguaje claro.</p>
-            </div>
-             <div class="soft-card">
-                <i class="fas fa-rocket"></i>
-                <h3>Resiliencia</h3>
-                <p>Persistencia ante errores y bugs difíciles. Veo el fallo como un dato para iterar.</p>
-            </div>
+    <h2 class="section-title">Soft Skills & Idiomas</h2>
+    
+    <div class="soft-skills-grid">
+        <div class="soft-card">
+            <i class="fas fa-brain"></i>
+            <h3>Pensamiento Analítico</h3>
+            <p>No solo escribo código; desgloso problemas complejos en componentes lógicos manejables.</p>
         </div>
-        
-        <div class="interests-bar">
-            <span><i class="fas fa-robot"></i> IA & LLMs</span>
-            <span><i class="fas fa-music"></i> Músico</span>
-            <span><i class="fas fa-gamepad"></i> Game Dev</span>
-            <span><i class="fas fa-video"></i> Gamer </span>
+        <div class="soft-card">
+            <i class="fas fa-sync-alt"></i>
+            <h3>Adaptabilidad</h3>
+            <p>Capacidad probada para saltar entre tecnologías (C++ a React Native) según lo requiera el proyecto.</p>
+        </div>
+        <div class="soft-card">
+            <i class="fas fa-users"></i>
+            <h3>Comunicación Técnica</h3>
+            <p>Habilidad para traducir conceptos técnicos complejos a lenguaje claro.</p>
+        </div>
+        <div class="soft-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Resiliencia</h3>
+            <p>Persistencia ante errores y bugs difíciles. Veo el fallo como un dato para iterar.</p>
+        </div>
+    </div>
+
+    <div class="languages-container">
+        <div class="language-item">
+            <div class="lang-info">
+                <span><i class="fas fa-language"></i> Inglés (English)</span>
+                <span>Nivel B2 - Intermediate</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" title="75% de dominio"></div>
+            </div>
+            <p style="text-align: center; font-size: 0.85rem; color: #8D6E63; margin-top: 8px;">
+                Capacidad para trabajar en entornos profesionales, con una correcta lectura y escritura del inglés y documentación técnica.
+            </p>
+        </div>
+    </div>
+    
+    <div class="interests-bar" style="margin-top: 30px;">
+        <span><i class="fas fa-robot"></i> IA & LLMs</span>
+        <span><i class="fas fa-music"></i> Músico</span>
+        <span><i class="fas fa-gamepad"></i> Game Dev</span>
+        <span><i class="fas fa-video"></i> Gamer </span>
+    </div>
+</section>
+
+    <section id="contact" class="reveal scale-up">
+        <h2 class="section-title">Contacta conmigo</h2>
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/charliegarcia.it@gmail.com" method="POST">
+                <input type="text" name="name" placeholder="Tu Nombre Completo" required>
+                <input type="email" name="_replyto" placeholder="Tu Correo de Contacto" required>
+                <textarea name="message" rows="5" placeholder="¿En qué puedo ayudarte?" required></textarea>
+                <input type="hidden" name="_subject" value="Nuevo contacto desde Portafolio">
+                <button type="submit">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
+            </form>
         </div>
     </section>
 

@@ -10,6 +10,22 @@
     
     <link rel="stylesheet" href="css/styles.css"> 
     <link rel="stylesheet" href="css/pardos.css"> 
+    <style>
+        /* Estilos específicos para la validación IARC */
+        .certification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(141, 110, 99, 0.1);
+            padding: 20px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--accent-light);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .cert-icon { color: #2e7d32; font-size: 1.2rem; }
+        .cert-text { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+    </style>
 </head>
 <body class="pardos-body">
 
@@ -41,6 +57,11 @@
                 ¿Buscas un reto que ponga a prueba tu lógica sin el estrés de los juegos convencionales?
                 Bienvenido a la experiencia definitiva donde las matemáticas se encuentran con el diseño Zen.
             </p>
+
+            <div class="certification-badge">
+                <i class="fas fa-check-circle cert-icon"></i>
+                <span class="cert-text">Clasificación Global IARC Certificada (Feb 2026)</span>
+            </div>
             
             <div class="cta-group">
                 <a href="https://play.google.com/store/apps/details?id=com.example.orbblaze" target="_blank" class="store-btn primary-cta">
@@ -104,6 +125,15 @@
             </div>
 
         </div>
+    </section>
+
+    <section class="reveal scale-up" style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.5); border-radius: 20px; margin: 0 20px;">
+        <i class="fas fa-award" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"></i>
+        <h2 style="margin-bottom: 10px;">Calidad Garantizada</h2>
+        <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
+            ParDos cumple con los estándares internacionales de contenido y seguridad. 
+            Calificado oficialmente por la <strong>IARC (International Age Rating Coalition)</strong> para su distribución global en tiendas digitales.
+        </p>
     </section>
 
     <section class="audience-section">
