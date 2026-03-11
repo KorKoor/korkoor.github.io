@@ -201,6 +201,7 @@ body {
     margin-bottom: 10px;
     /* Degradado sutil */
     background: linear-gradient(45deg, var(--text-main), var(--accent));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
