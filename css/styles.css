@@ -260,8 +260,11 @@ body {
     height: 380px;
     object-fit: cover;
     border-radius: 50%;
-    border: 8px solid rgba(255,255,255, 0.8);
-    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.15);
+    
+    /* MODIFICACIÓN PARA FOTO DE NOCHE: Borde difuminado y sombra para mezclar con el fondo crema */
+    border: 8px solid rgba(62, 39, 35, 0.4); 
+    box-shadow: 0 0 30px rgba(141, 110, 99, 0.4), 0 20px 40px rgba(62, 39, 35, 0.25);
+    
     position: relative;
     z-index: 2;
     animation: float 6s ease-in-out infinite;
@@ -458,6 +461,7 @@ footer {
     .my-name { font-size: 3rem; }
     .navbar { padding: 0 20px; }
 }
+
 /* --- EFECTO TILT (3D al mover mouse) --- */
 .tilt-card {
     transition: transform 0.1s ease-out; /* Muy rápido para seguir al mouse */
@@ -580,6 +584,7 @@ footer {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
 /* --- BOTÓN MUNDO INTERNO (EN PERFIL) --- */
 .btn-internal {
     display: inline-flex;
@@ -619,6 +624,7 @@ footer {
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
 }
+
 /* Nuevo botón secundario para "Ver Sitio" */
 .details-btn {
     display: flex; 
@@ -641,6 +647,7 @@ footer {
     background: #8D6E63; 
     color: white; 
 }
+
 /* --- ESTILOS DE IDIOMAS Y BARRA --- */
 .languages-container {
     margin-top: 40px;
