@@ -99,7 +99,7 @@
 
 .bento-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.1);
+    box-shadow: 0 30px 60px -20px rgba(62, 39, 35, 0.2), 0 10px 20px -10px rgba(62, 39, 35, 0.1);
     border-color: #8D6E63;
 }
 
@@ -159,32 +159,46 @@
     align-self: flex-start;
 }
 
-/* --- EL HUSKY 3D (LEE) - VERSIÓN TARJETA ESTÁNDAR --- */
-#lee {
-    background: linear-gradient(135deg, #FFF 0%, #F5F5F5 100%);
-    overflow: visible; /* Permitir efecto 3D */
-    z-index: 10;
-    border: 2px solid white;
+/* --- CHIPS (mini-grid de íconos, ej. comida favorita) --- */
+.bento-chips {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 4px 0 14px;
 }
 
-.bento-3d-img {
-    position: absolute;
-    bottom: -10px;     
-    right: -20px;      
-    width: 220px;      /* Tamaño ajustado para tarjeta estándar */
-    z-index: 3;        
-    filter: drop-shadow(8px 8px 15px rgba(0,0,0,0.15));
-    transition: transform 0.4s ease;
+.bento-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
 }
 
-#lee:hover .bento-3d-img {
-    transform: scale(1.1) rotate(-3deg) translateY(-5px);
+.bento-chip-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--chip-color, #8D6E63) 14%, white);
+    color: var(--chip-color, #8D6E63);
+    font-size: 1.15rem;
+    transition: transform 0.25s cubic-bezier(.4,0,.2,1), background 0.25s ease;
 }
 
-#lee .bento-content {
-    position: relative;
-    z-index: 5;
-    max-width: 65%; /* Texto más estrecho para no tapar al perro */
+.bento-chip-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #5D4037;
+    letter-spacing: -0.01em;
+}
+
+.bento-chip:hover .bento-chip-icon {
+    transform: translateY(-4px) scale(1.08);
+    background: var(--chip-color, #8D6E63);
+    color: #fff;
 }
 
 /* --- ANIMACIONES --- */
@@ -213,15 +227,345 @@
         height: auto;       /* Altura flexible en móvil */
         min-height: 300px;
     }
-
-    .bento-3d-img {
-        width: 160px;
-        opacity: 0.5; /* Transparente para leer mejor en móvil */
-        right: -10px;
-    }
-    
-    #lee .bento-content { max-width: 100%; }
 }
+/* --- 4. VISOR 3D (Three.js) --- */
+.model3d-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.model3d-subtitle {
+    max-width: 640px;
+    margin: 0 auto 30px;
+    color: #5D4037;
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+.model3d-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: left;
+}
+
+.model3d-row {
+    display: flex;
+    align-items: stretch;
+    gap: 32px;
+    background: linear-gradient(160deg, #FFFFFF 0%, #F5F0EC 100%);
+    border: 1px solid #EFEBE9;
+    border-radius: 24px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.06);
+    transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+}
+
+.model3d-row:hover {
+    border-color: #8D6E63;
+    box-shadow: 0 35px 70px -25px rgba(62, 39, 35, 0.22), 0 12px 24px -12px rgba(62, 39, 35, 0.1);
+    transform: translateY(-4px);
+}
+
+/* Alterna el lado de la imagen para dar ritmo editorial a la lista */
+.model3d-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.model3d-row .model3d-canvas-wrap {
+    flex: 1 1 380px;
+    min-width: 280px;
+}
+
+.model3d-info {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 16px;
+}
+
+.model3d-info h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #3E2723;
+    margin-bottom: 14px;
+}
+
+.model3d-info h3 i {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(141, 110, 99, 0.12);
+    color: #8D6E63;
+    border-radius: 13px;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.model3d-role {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8D6E63;
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+.model3d-info p {
+    color: #5D4037;
+    line-height: 1.75;
+    margin-bottom: 18px;
+}
+
+/* --- Ficha de datos rápidos (estilo "spec sheet") --- */
+.model3d-facts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.model3d-fact {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #FDFBF7;
+    border: 1px solid #EFEBE9;
+    border-radius: 14px;
+    padding: 12px 14px;
+}
+
+.model3d-fact i {
+    color: #8D6E63;
+    font-size: 1rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+}
+
+.model3d-fact div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.model3d-fact span {
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #A1887F;
+}
+
+.model3d-fact strong {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #3E2723;
+    line-height: 1.35;
+}
+
+.model3d-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.model3d-tags span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #8D6E63;
+    background: rgba(141, 110, 99, 0.1);
+    padding: 6px 14px;
+    border-radius: 30px;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.model3d-tags span:hover {
+    background: #8D6E63;
+    color: #fff;
+}
+.model3d-tags span:hover i { color: #fff; }
+
+@media (max-width: 760px) {
+    .model3d-row,
+    .model3d-row:nth-child(even) {
+        flex-direction: column;
+    }
+    .model3d-info {
+        padding: 4px 4px 0;
+        text-align: center;
+    }
+    .model3d-info h3 { justify-content: center; }
+    .model3d-tags { justify-content: center; }
+    .model3d-facts { grid-template-columns: 1fr; }
+    .model3d-fact { text-align: left; }
+}
+
+.model3d-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 28%, #fff 0%, #EFEBE9 100%);
+    cursor: grab;
+    box-shadow: inset 0 0 0 1px rgba(62, 39, 35, 0.04);
+}
+
+.model3d-canvas-wrap::after {
+    /* Viñeta sutil para look de "estudio fotográfico" */
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 70px rgba(62, 39, 35, 0.10);
+    border-radius: inherit;
+}
+
+.model3d-canvas-wrap:active {
+    cursor: grabbing;
+}
+
+.model3d-canvas-wrap.is-fullscreen {
+    background: #FDFBF7;
+}
+
+.model3d-canvas-wrap canvas.model3d-canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: none;
+}
+
+/* --- Carga: barra de progreso real --- */
+.model3d-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 28%, #fff 0%, #EFEBE9 100%);
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    z-index: 3;
+}
+
+.model3d-loading.is-done { opacity: 0; }
+
+.model3d-progress {
+    width: 55%;
+    max-width: 220px;
+    height: 4px;
+    background: rgba(141, 110, 99, 0.15);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.model3d-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #8D6E63;
+    border-radius: 99px;
+    transition: width 0.25s ease-out;
+}
+
+.model3d-loading-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #8D6E63;
+    letter-spacing: 0.03em;
+}
+
+/* --- Barra de controles flotante (glass pill) --- */
+.model3d-controls {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    display: flex;
+    gap: 6px;
+    padding: 6px;
+    background: rgba(253, 251, 247, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(62, 39, 35, 0.08);
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(62, 39, 35, 0.1);
+    z-index: 4;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.model3d-canvas-wrap:hover .model3d-controls,
+.model3d-canvas-wrap:focus-within .model3d-controls,
+.model3d-canvas-wrap.is-fullscreen .model3d-controls {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.model3d-ctrl {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #5D4037;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.model3d-ctrl:hover { background: rgba(141, 110, 99, 0.15); }
+
+.model3d-ctrl.is-active {
+    background: #8D6E63;
+    color: #fff;
+}
+
+@media (hover: none) {
+    /* En touch no hay :hover — mostrar controles siempre */
+    .model3d-controls { opacity: 1; transform: translateY(0); }
+}
+
+.model3d-hint {
+    margin: 0 auto 30px;
+    font-size: 0.85rem;
+    color: #8D6E63;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .model3d-canvas-wrap { height: 340px; }
+}
+
+/* --- SECCIONES DEL BENTO (subtítulos entre grupos de tarjetas) --- */
+.bento-section-title {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin: 20px 0 -6px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #3E2723;
+    letter-spacing: -0.02em;
+}
+
+.bento-section-title:first-child {
+    margin-top: 0;
+}
+
 /* --- BOTÓN VOLVER (EN PERSONAL HEADER) --- */
 .btn-return {
     display: inline-flex;

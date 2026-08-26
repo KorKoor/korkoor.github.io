@@ -32,6 +32,17 @@ body {
     overflow-x: hidden;
 }
 
+/* --- Grano sutil sobre toda la página (textura premium, no distrae) --- */
+.noise-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 /* --- 2. FONDO ANIMADO 'PARDOS' (Las fichas flotantes) --- */
 .pardos-bg {
     position: fixed;
@@ -81,7 +92,12 @@ body {
     justify-content: center;
     align-items: center;
     padding: 0 40px;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.08);
+    background: rgba(253, 251, 247, 0.95);
 }
 
 .nav-container {
@@ -130,6 +146,12 @@ body {
 .nav-menu a:hover { color: var(--accent); }
 .nav-menu a:hover::after { width: 100%; }
 
+.nav-menu a.active-link {
+    color: var(--accent);
+    font-weight: 800;
+}
+.nav-menu a.active-link::after { width: 100%; }
+
 /* Buscador */
 .search-box {
     display: flex;
@@ -163,6 +185,35 @@ body {
     font-size: 1rem;
 }
 
+/* Menú hamburguesa (solo visible en móvil/tablet) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 34px;
+    height: 34px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1100;
+    position: relative;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1), opacity 0.2s ease;
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
 /* --- 4. HERO SECTION (Layout Pro) --- */
 .hero {
     min-height: 100vh;
@@ -195,9 +246,10 @@ body {
 }
 
 .my-name {
-    font-size: 4.5rem;
+    font-size: 4.75rem;
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
     margin-bottom: 10px;
     /* Degradado sutil */
     background: linear-gradient(45deg, var(--text-main), var(--accent));
@@ -273,13 +325,20 @@ body {
 
 .blob-bg {
     position: absolute;
-    width: 390px;
-    height: 390px;
-    background-color: var(--accent-light);
-    border-radius: 50%;
-    opacity: 0.6;
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+    opacity: 0.45;
     z-index: 1;
     transform: translate(20px, 20px);
+    animation: blobMorph 10s ease-in-out infinite;
+    filter: blur(2px);
+}
+
+@keyframes blobMorph {
+    0%, 100% { border-radius: 50% 50% 50% 50%; transform: translate(20px, 20px) rotate(0deg); }
+    33% { border-radius: 58% 42% 45% 55% / 45% 55% 45% 55%; transform: translate(25px, 15px) rotate(6deg); }
+    66% { border-radius: 45% 55% 58% 42% / 55% 45% 58% 42%; transform: translate(15px, 25px) rotate(-6deg); }
 }
 
 @keyframes float {
@@ -302,13 +361,15 @@ body {
 
 /* --- 5. SECCIONES Y TARJETAS --- */
 section {
-    padding: 80px 20px;
+    padding: 110px 24px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 h2.section-title {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     text-align: center;
     margin-bottom: 60px;
     position: relative;
@@ -349,7 +410,7 @@ h2.section-title::after {
 
 .project-card:hover, .soft-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(62, 39, 35, 0.08);
+    box-shadow: 0 30px 60px -20px rgba(62, 39, 35, 0.18), 0 10px 20px -10px rgba(62, 39, 35, 0.08);
     border-color: var(--accent);
 }
 
@@ -431,11 +492,59 @@ h2.section-title::after {
 /* Footer */
 footer {
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px 40px;
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin-top: 40px;
     border-top: 1px solid var(--accent-light);
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-logo { font-size: 1.6rem; }
+
+.footer-tagline {
+    color: var(--text-secondary);
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
+.footer-social { display: flex; gap: 22px; }
+.footer-social .social-icon { font-size: 1.4rem; }
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 28px;
+    margin-top: 4px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.25s ease;
+}
+.footer-links a:hover { color: var(--accent); }
+
+.footer-copy {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--accent-light);
+    width: 100%;
+    font-size: 0.8rem;
+    opacity: 0.75;
 }
 
 /* --- 7. ANIMACIONES DE ENTRADA (Reveal) --- */
@@ -452,15 +561,64 @@ footer {
 
 /* --- 8. RESPONSIVE --- */
 @media (max-width: 900px) {
-    .nav-menu { display: none; } /* Ocultar menú en móvil para simplificar */
+    .hamburger { display: flex; }
+    .search-box { display: none; }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: rgba(253, 251, 247, 0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        box-shadow: 0 20px 40px rgba(62, 39, 35, 0.1);
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        padding: 10px 30px 20px;
+        transform: translateY(-12px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.3s cubic-bezier(.4,0,.2,1), opacity 0.25s ease, visibility 0.3s;
+    }
+
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .nav-menu li { width: 100%; }
+    .nav-menu a {
+        display: block;
+        padding: 16px 4px;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(62, 39, 35, 0.06);
+    }
+    .nav-menu li:last-child a { border-bottom: none; }
+    .nav-menu a::after { display: none; }
+
+    body.nav-open { overflow: hidden; }
+
     .hero-container { flex-direction: column-reverse; text-align: center; padding-top: 40px; }
     .hero-text { text-align: center; }
     .contact-info-block { align-items: center; }
+    .info-item { text-align: left; }
     .social-links { justify-content: center; }
-    
+
     .profile-pic, .blob-bg { width: 260px; height: 260px; }
     .my-name { font-size: 3rem; }
     .navbar { padding: 0 20px; }
+}
+
+@media (max-width: 420px) {
+    .my-name { font-size: 2.4rem; }
+    .role-wrapper { font-size: 1.4rem; }
 }
 
 /* --- EFECTO TILT (3D al mover mouse) --- */

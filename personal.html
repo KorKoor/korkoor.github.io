@@ -19,13 +19,17 @@
         <div class="nav-container">
             <a href="index.html" class="logo">CG.</a>
             
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="index.html#projects">Proyectos</a></li>
                 <li><a href="#" class="active-link">Mundo Interno</a></li>
             </ul>
-        </div> 
-    
+
+            <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
     </nav>
 
     <main class="personal-wrapper">
@@ -41,16 +45,131 @@
             </div>
         </header>
 
+        <section class="model3d-section">
+            <h2 class="section-title">Escaneado en 3D</h2>
+            <p class="model3d-subtitle">
+                Estos somos Lee y yo, capturados con un escaneo 3D real y renderizados en vivo
+                con <strong>Three.js</strong> — directo en tu navegador, sin descargas ni apps.
+            </p>
+
+            <p class="model3d-hint"><i class="fas fa-arrows-rotate"></i> Arrastra para rotar &middot; Scroll / pellizca para hacer zoom &middot; Usa los controles del visor</p>
+
+            <div class="model3d-list">
+                <div class="model3d-row">
+                    <div class="model3d-canvas-wrap" id="viewer-charly">
+                        <div class="model3d-loading">
+                            <div class="model3d-progress"><div class="model3d-progress-bar"></div></div>
+                            <span class="model3d-loading-text">Cargando modelo 3D&hellip; <b>0%</b></span>
+                        </div>
+                        <div class="model3d-controls">
+                            <button type="button" class="model3d-ctrl is-active" data-action="rotate" title="Auto-rotación"><i class="fas fa-rotate"></i></button>
+                            <button type="button" class="model3d-ctrl" data-action="reset" title="Reiniciar vista"><i class="fas fa-camera-rotate"></i></button>
+                            <button type="button" class="model3d-ctrl" data-action="fullscreen" title="Pantalla completa"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                    <div class="model3d-info">
+                        <h3><i class="fas fa-user"></i> Charly</h3>
+                        <p class="model3d-role">Jr. Android Developer &middot; Aguascalientes, MX</p>
+
+                        <p>Desarrollador de software egresado de la Universidad Autónoma de Aguascalientes, especializado en el ecosistema Android nativo con <strong>Kotlin y Jetpack Compose</strong>. Llevé ParDos desde una idea hasta Google Play con certificación IARC, y colaboré con el Departamento de Enfermería de la UAA en herramientas de salud reales.</p>
+
+                        <p>Formo parte del <strong>espectro autista</strong> y no lo escondo: explica mi hiperfoco, mi honestidad sin filtros y mi necesidad de lógica y rutinas claras. Es la forma en la que proceso el mundo — y también la razón por la que puedo pasar horas desmontando un problema hasta entenderlo por completo.</p>
+
+                        <p>Fuera del código: gimnasio enfocado en hipertrofia, Call of Duty, modding de videojuegos y una lista corta de intereses profundos antes que muchos superficiales.</p>
+
+                        <div class="model3d-facts">
+                            <div class="model3d-fact">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div><span>Educación</span><strong>UAA — Informática y Tecnologías Computacionales</strong></div>
+                            </div>
+                            <div class="model3d-fact">
+                                <i class="fas fa-briefcase"></i>
+                                <div><span>Rol actual</span><strong>Jr. Android Developer</strong></div>
+                            </div>
+                            <div class="model3d-fact">
+                                <i class="fas fa-rocket"></i>
+                                <div><span>Shipped</span><strong>ParDos en Google Play (IARC)</strong></div>
+                            </div>
+                            <div class="model3d-fact">
+                                <i class="fas fa-language"></i>
+                                <div><span>Idiomas</span><strong>Español · Inglés B2 · Francés A1</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="model3d-tags">
+                            <span><i class="fas fa-map-marker-alt"></i> Aguascalientes, MX</span>
+                            <span><i class="fab fa-android"></i> Kotlin &amp; Compose</span>
+                            <span><i class="fas fa-infinity"></i> TEA</span>
+                            <span><i class="fas fa-dumbbell"></i> Hipertrofia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="model3d-row">
+                    <div class="model3d-canvas-wrap" id="viewer-lee">
+                        <div class="model3d-loading">
+                            <div class="model3d-progress"><div class="model3d-progress-bar"></div></div>
+                            <span class="model3d-loading-text">Cargando modelo 3D&hellip; <b>0%</b></span>
+                        </div>
+                        <div class="model3d-controls">
+                            <button type="button" class="model3d-ctrl is-active" data-action="rotate" title="Auto-rotación"><i class="fas fa-rotate"></i></button>
+                            <button type="button" class="model3d-ctrl" data-action="reset" title="Reiniciar vista"><i class="fas fa-camera-rotate"></i></button>
+                            <button type="button" class="model3d-ctrl" data-action="fullscreen" title="Pantalla completa"><i class="fas fa-expand"></i></button>
+                        </div>
+                    </div>
+                    <div class="model3d-info">
+                        <h3><i class="fas fa-paw"></i> Lee</h3>
+                        <p class="model3d-role">Husky Siberiano &middot; Compañero constante</p>
+
+                        <p>Más que una mascota, Lee es mi refugio emocional: una conexión silenciosa que me recuerda la pureza del amor sin condiciones. Está presente en cada sesión larga de código y en cada caminata que despeja mi mente.</p>
+
+                        <div class="model3d-facts">
+                            <div class="model3d-fact">
+                                <i class="fas fa-dog"></i>
+                                <div><span>Raza</span><strong>Husky Siberiano</strong></div>
+                            </div>
+                            <div class="model3d-fact">
+                                <i class="fas fa-heart"></i>
+                                <div><span>Personalidad</span><strong>Leal, curioso, enérgico</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="model3d-tags">
+                            <span><i class="fas fa-dog"></i> Husky Siberiano</span>
+                            <span><i class="fas fa-house"></i> Aguascalientes, MX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div id="personal-container"></div>
 
     </main>
 
-    <script type="module">
-        import { PersonalLife } from './js/personal.js';
-        
-        document.addEventListener('DOMContentLoaded', () => {
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script>
+        // Import dinámico (en vez de import estático) para garantizar que el
+        // import map de arriba ya esté registrado antes de resolver 'three'.
+        document.addEventListener('DOMContentLoaded', async () => {
+            const { setupMobileMenu, setupNavScrollEffect } = await import('./js/nav.js');
+            setupMobileMenu();
+            setupNavScrollEffect();
+
+            const { PersonalLife } = await import('./js/personal.js');
             const myLife = new PersonalLife('personal-container');
             myLife.render();
+
+            const { initModel3D } = await import('./js/model-viewer.js');
+            initModel3D();
         });
     </script>
 

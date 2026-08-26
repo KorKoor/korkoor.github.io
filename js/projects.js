@@ -59,6 +59,48 @@ const projectsData = [
     badgeColor: "#00875F",
   },
   {
+    title: "Mario-64-WebCam",
+    subtitle: "Visión por Computadora · Mod para SM64 CoopDX",
+    description: "Mod que controla Super Mario 64 CoopDX con gestos de las manos. Python + MediaPipe reconocen puño, palma, paz y más en tiempo real; un puente JSON sincroniza esa lectura con un mod en Lua dentro del motor del juego — una mano mueve a Mario, la otra invoca y manipula objetos del mundo.",
+    impact: "Control dual por gestos · Puente Python ↔ Lua en tiempo real",
+    tags: ["Python", "MediaPipe", "Lua", "OpenCV", "Game Modding"],
+    repoUrl: "https://github.com/KorKoor/Mario-64-WebCam",
+    liveUrl: null,
+    previewUrl: null,
+    placeholderIcon: "fa-hand",
+    placeholderLabel: "Computer Vision · Game Mod",
+    badge: "🖐️ Open Source",
+    badgeColor: "#0097A7",
+  },
+  {
+    title: "Analizador Estadístico de Encuestas",
+    subtitle: "Ciencia de Datos · Python",
+    description: "Herramienta en Python para procesar y visualizar resultados de encuestas con rigor estadístico: mapas de calor y gráficas de distribución generadas con pandas, SciPy, Matplotlib y Seaborn, convirtiendo datos crudos en insights claros y presentables.",
+    impact: "Mapas de calor · Gráficas de distribución",
+    tags: ["Python", "pandas", "SciPy", "Matplotlib", "Seaborn"],
+    repoUrl: null,
+    liveUrl: null,
+    previewUrl: null,
+    placeholderIcon: "fa-chart-column",
+    placeholderLabel: "Data Science · Python",
+    badge: "📊 Data Science",
+    badgeColor: "#5E35B1",
+  },
+  {
+    title: "Recomendador de Corte por Geometría Facial",
+    subtitle: "Visión por Computadora · MediaPipe",
+    description: "Herramienta modular en Python que analiza los landmarks faciales detectados por MediaPipe para determinar la forma exacta del rostro y recomendar el corte de cabello ideal según proporciones geométricas.",
+    impact: "Análisis geométrico facial · Recomendación personalizada",
+    tags: ["Python", "MediaPipe", "OpenCV", "Geometría Computacional"],
+    repoUrl: null,
+    liveUrl: null,
+    previewUrl: null,
+    placeholderIcon: "fa-scissors",
+    placeholderLabel: "Computer Vision · Python",
+    badge: "✂️ Computer Vision",
+    badgeColor: "#C2185B",
+  },
+  {
     title: "Sudoku Solver ADN",
     subtitle: "Computación Evolutiva · C++",
     description: "Solucionador de sudokus 9×9 con Algoritmos Genéticos: mutación, selección natural y evolución iterativa. Alto rendimiento en C++ con metaheurísticas de optimización.",
@@ -78,7 +120,7 @@ const projectsData = [
     description: "Suite de overlays para streaming en tiempo real. Chat de Twitch vía WebSockets, pantalla BRB con marco para video y animación de galaxia de partículas para cierre. HTML/CSS/JS puro.",
     impact: "WebSockets en tiempo real · Producción visual",
     tags: ["JavaScript", "WebSockets", "CSS Animations", "Twitch API"],
-    repoUrl: "https://github.com/KorKoor",
+    repoUrl: "https://github.com/KorKoor/Streams-Layouts",
     liveUrl: "https://stream.korwork.org/OnlineScreen.html",
     previewUrl: "https://stream.korwork.org/OnlineScreen.html",
     placeholderIcon: "fa-broadcast-tower",
@@ -122,7 +164,7 @@ function injectStyles() {
     }
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(62,39,35,.11);
+      box-shadow: 0 30px 60px -20px rgba(62,39,35,.2), 0 10px 20px -10px rgba(62,39,35,.1);
       border-color: var(--pc, #8D6E63);
     }
     /* Preview */
@@ -220,6 +262,12 @@ function injectStyles() {
     .proj-btn-secondary:hover {
       border-color: var(--pc, #8D6E63); color: var(--pc, #8D6E63);
     }
+    .proj-btn-locked {
+      flex: 1; text-align: center; padding: 9px 10px;
+      border-radius: 10px; font-size: .72rem; font-weight: 800;
+      background: #F5F0ED; color: #A1887F;
+      border: 2px dashed #D7CCC8; cursor: default;
+    }
   `;
   document.head.appendChild(s);
 }
@@ -228,7 +276,7 @@ function injectStyles() {
 function buildPreview(proj) {
   if (proj.previewUrl) {
     const url = `https://image.thum.io/get/width/800/crop/450/noanimate/${encodeURIComponent(proj.previewUrl)}`;
-    const fallback = `this.closest('.proj-preview').innerHTML='<div class="proj-placeholder"><i class="fas ${proj.placeholderIcon}"></i><span>${proj.placeholderLabel}</span></div>'`;
+    const fallback = `this.closest('.proj-preview').innerHTML='<div class=&quot;proj-placeholder&quot;><i class=&quot;fas ${proj.placeholderIcon}&quot;></i><span>${proj.placeholderLabel}</span></div>'`;
     return `<div class="proj-preview">
       <img src="${url}" alt="Preview ${proj.title}" loading="lazy" decoding="async" onerror="${fallback}">
     </div>`;
@@ -267,9 +315,9 @@ export function loadProjects(containerId) {
       <div class="project-impact">${proj.impact}</div>
       <div class="proj-tags">${proj.tags.map(t => `<span class="proj-tag">${t}</span>`).join('')}</div>
       <div class="proj-actions">
-        <a href="${proj.repoUrl}" target="_blank" rel="noopener" class="proj-btn proj-btn-primary">
-          <i class="fab fa-github"></i> Código
-        </a>
+        ${proj.repoUrl
+          ? `<a href="${proj.repoUrl}" target="_blank" rel="noopener" class="proj-btn proj-btn-primary"><i class="fab fa-github"></i> Código</a>`
+          : `<span class="proj-btn-locked"><i class="fas fa-lock"></i> Código privado</span>`}
         ${proj.liveUrl ? `<a href="${proj.liveUrl}" target="_blank" rel="noopener" class="proj-btn proj-btn-secondary">Demo →</a>` : ''}
       </div>`;
     fragment.appendChild(card);
