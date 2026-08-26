@@ -118,15 +118,26 @@
 }
 
 .app-icon-large {
-    width: 120px; height: 120px;
-    margin: 0 auto 20px;
-    border-radius: 28px;
+    width: 132px; height: 132px;
+    margin: 0 auto 28px;
+    border-radius: 32px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(62, 39, 35, 0.15);
+    box-shadow: 0 30px 60px -20px rgba(62, 39, 35, 0.35), 0 10px 25px -10px rgba(62, 39, 35, 0.2);
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.app-icon-large::before {
+    /* Anillo de resplandor detrás del ícono, tipo "feature" de App Store */
+    content: '';
+    position: absolute;
+    inset: -30px;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(141, 110, 99, 0.35) 0%, rgba(141, 110, 99, 0) 70%);
 }
 
 .app-icon-large img { width: 100%; height: 100%; object-fit: cover; }
@@ -207,17 +218,57 @@
 .qr-box i { font-size: 2rem; margin-bottom: 5px; }
 .qr-box:hover { color: #3E2723; transform: scale(1.1); }
 
+/* --- Stat strip estilo "spec bar" --- */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 56px;
+    flex-wrap: wrap;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.hero-stat strong {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #3E2723;
+}
+
+.hero-stat span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8D6E63;
+}
+
+.hero-stat-divider {
+    width: 1px;
+    height: 32px;
+    background: #D7CCC8;
+}
+
 /* =========================================
    4. CARRUSEL (HORIZONTAL / LANDSCAPE)
    ========================================= */
 .showcase-section {
-    padding: 80px 0;
+    padding: 110px 0;
     text-align: center;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: #3E2723;
     margin-bottom: 10px;
 }
@@ -236,11 +287,37 @@
     padding: 20px; 
 }
 
-.carousel-container {
-    width: 720px;  
-    height: 405px; /* 16:9 */
-    perspective: 1500px; 
+/* --- Marco de dispositivo (bisel oscuro tipo mockup de teléfono) --- */
+.device-frame {
     position: relative;
+    width: 764px;
+    max-width: 100%;
+    padding: 14px;
+    background: linear-gradient(165deg, #2b211e 0%, #17110f 100%);
+    border-radius: 34px;
+    box-shadow: 0 40px 80px -20px rgba(23, 17, 15, 0.5), 0 0 0 1px rgba(255,255,255,0.04) inset;
+}
+
+.device-cam {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #000;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.06);
+    transform: translateY(-50%);
+    z-index: 5;
+}
+
+.carousel-container {
+    width: 100%;
+    aspect-ratio: 13 / 6; /* Ratio real de las capturas (2340x1080) — sin distorsión */
+    perspective: 1500px;
+    position: relative;
+    /* Sin overflow:hidden — las tarjetas prev/next del coverflow
+       necesitan asomarse fuera de este contenedor. */
 }
 
 .carousel-track {
@@ -255,17 +332,16 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 12px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-    border: 4px solid #3E2723;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
     background: #000;
     overflow: hidden;
-    
+
     /* Transición suave para todo */
     transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.6s ease, z-index 0s linear 0.3s;
-    
+
     /* Ocultar por defecto */
-    display: none; 
+    display: none;
     opacity: 0;
     transform-origin: center center;
 }
@@ -273,12 +349,12 @@
 .screenshot-item.active {
     display: block;
     opacity: 1;
-    box-shadow: 0 30px 60px rgba(62, 39, 35, 0.6);
-    border-color: #8D6E63;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
 }
 
 .screenshot-item img {
-    width: 100%; height: 100%; object-fit: fill; 
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
 }
 
 /* Botones Nav */
@@ -290,10 +366,10 @@
     font-size: 1.5rem;
     color: #3E2723;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px -12px rgba(62,39,35,0.25), 0 6px 12px -6px rgba(62,39,35,0.1);
     z-index: 50;
     transition: 0.3s;
-    position: absolute; 
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -321,7 +397,7 @@
    5. FEATURES BENTO GRID
    ========================================= */
 .features-section {
-    padding: 100px 20px;
+    padding: 110px 20px;
     background: white;
 }
 
@@ -335,25 +411,37 @@
 
 .feature-card {
     background: #FDFBF7;
-    padding: 40px 30px;
-    border-radius: 24px;
+    padding: 44px 32px;
+    border-radius: 26px;
     border: 1px solid #EFEBE9;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(62, 39, 35, 0.1);
+    box-shadow: 0 30px 60px -20px rgba(62, 39, 35, 0.18), 0 10px 20px -10px rgba(62, 39, 35, 0.08);
     border-color: #8D6E63;
 }
 
-.feature-card i { font-size: 3rem; margin-bottom: 25px; display: inline-block; }
+.feature-icon {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 26px;
+    border-radius: 22px;
+    font-size: 1.7rem;
+    transition: transform 0.3s ease;
+}
 
-.zen-style i { color: #8D6E63; }
-.achievements-style i { color: #FFC107; }
-.privacy-style i { color: #4CAF50; }
-.tech-style i { color: #2196F3; }
+.feature-card:hover .feature-icon { transform: scale(1.08) rotate(-4deg); }
+
+.zen-style .feature-icon { background: rgba(141, 110, 99, 0.12); color: #8D6E63; }
+.achievements-style .feature-icon { background: rgba(255, 193, 7, 0.14); color: #E5A400; }
+.privacy-style .feature-icon { background: rgba(76, 175, 80, 0.13); color: #4CAF50; }
+.tech-style .feature-icon { background: rgba(33, 150, 243, 0.13); color: #2196F3; }
 
 .feature-card h3 {
     color: #3E2723;
@@ -369,16 +457,78 @@
 }
 
 /* =========================================
+   5b. CERTIFICACIÓN IARC
+   ========================================= */
+.certified-section {
+    padding: 0 20px 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.certified-card {
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(160deg, #FFFFFF 0%, #F8F4F1 100%);
+    border: 1px solid #EFEBE9;
+    border-radius: 28px;
+    padding: 50px 40px;
+    box-shadow: 0 30px 60px -25px rgba(62, 39, 35, 0.15);
+}
+
+.certified-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border-radius: 20px;
+    background: rgba(46, 125, 50, 0.12);
+    color: #2e7d32;
+    font-size: 1.6rem;
+}
+
+.certified-card h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    color: #3E2723;
+}
+
+.certified-card p {
+    max-width: 480px;
+    margin: 0 auto 22px;
+    color: #5D4037;
+    line-height: 1.7;
+}
+
+.certified-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2e7d32;
+    background: rgba(46, 125, 50, 0.08);
+    padding: 8px 18px;
+    border-radius: 30px;
+}
+
+/* =========================================
    6. AUDIENCE & FOOTER
    ========================================= */
 .audience-section {
-    padding: 100px 20px;
+    padding: 110px 20px;
     text-align: center;
     background: #FDFBF7;
 }
 
 .audience-section h2 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     color: #3E2723;
     margin-bottom: 50px;
 }
@@ -394,14 +544,17 @@
 
 .icon-circle {
     width: 80px; height: 80px;
-    background: #3E2723;
+    background: linear-gradient(160deg, #4a3733 0%, #3E2723 100%);
     color: white;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 20px;
     font-size: 2rem;
-    box-shadow: 0 10px 20px rgba(62, 39, 35, 0.2);
+    box-shadow: 0 20px 40px -12px rgba(62, 39, 35, 0.35);
+    transition: transform 0.3s ease;
 }
+
+.audience-item:hover .icon-circle { transform: translateY(-6px) scale(1.05); }
 
 .audience-item h4 {
     font-size: 1.2rem;
@@ -411,14 +564,22 @@
 
 /* Final CTA */
 .final-cta {
-    background: #3E2723;
+    background: radial-gradient(circle at 50% 0%, #4a3733 0%, #3E2723 55%, #2D211E 100%);
     color: white;
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-.final-cta h2 { font-size: 3rem; margin-bottom: 20px; color: #FFF; }
-.final-cta p { font-size: 1.3rem; margin-bottom: 40px; opacity: 0.9; }
+.final-cta h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: #FFF;
+}
+.final-cta p { font-size: 1.3rem; margin-bottom: 40px; opacity: 0.85; }
 
 .large-btn {
     background: white;
@@ -428,15 +589,22 @@
     font-size: 1.3rem;
     border-radius: 50px;
     font-weight: 800;
+    box-shadow: 0 25px 50px -15px rgba(0,0,0,0.4);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s ease, background 0.3s ease;
 }
-.large-btn:hover { background: #EFEBE9; transform: scale(1.05); }
+.large-btn:hover {
+    background: #EFEBE9;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5);
+}
 
 /* Footer */
 footer {
     background: #2D211E;
     color: rgba(255,255,255,0.6);
-    padding: 40px 20px;
-    font-size: 0.9rem;
+    padding: 34px 20px;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
 }
 
 .footer-content {
@@ -460,18 +628,22 @@ footer {
    ========================================= */
 @media (max-width: 900px) {
     .pardos-title { font-size: 3rem; }
-    
-    .nav-links a:not(.back-link) { display: none; }
-    .back-link span { display: none; }
-    
-    .carousel-container {
-        width: 90%; 
-        height: auto;
-        aspect-ratio: 16/9;
+
+    .device-frame {
+        width: 92%;
+        padding: 10px;
     }
-    
+    .carousel-container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 13/6;
+    }
+
     .nav-btn { display: none; }
-    
+
+    .hero-stats { gap: 18px; }
+    .hero-stat strong { font-size: 1.3rem; }
+
     .footer-content {
         flex-direction: column;
         gap: 20px;

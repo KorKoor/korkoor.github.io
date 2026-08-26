@@ -3,55 +3,9 @@
    ========================================= */
 import { ParDosGame } from './game.js';
 import { PersonalLife } from './personal.js';
-
-/* =========================================
-   DATOS (Skills y Proyectos)
-   ========================================= */
-const skillsData = [
-    {
-        category: "Mobile & Cross-Platform",
-        items: ["Android Nativo (Kotlin)", "React Native", "Jetpack Compose", "Expo"]
-    },
-    {
-        category: "Web & Full Stack",
-        items: ["HTML5 & CSS3", "JavaScript (ES6+)", "React.js", "APIs RESTful"]
-    },
-    {
-        category: "Backend & Core",
-        items: ["Python", "C# (.NET)", "C / C++", "Node.js"]
-    },
-    {
-        category: "Data & Tools",
-        items: ["SQL & MongoDB", "Git/GitHub", "Análisis de Datos", "Algoritmos"]
-    }
-];
-
-const projectsData = [
-    {
-        title: "ParDos Puzzle Game",
-        description: "Evolución estética del 2048 creada con Jetpack Compose. Animaciones 'Juicy', soporte vertical/horizontal y optimización de rendimiento.",
-        tags: ["Kotlin", "Jetpack Compose", "Android", "Game Dev"],
-        repoUrl: "https://github.com/KorKoor/ParDos-Puzzle-Game"
-    },
-    {
-        title: "PLAY-ZONE Social Network",
-        description: "Plataforma Full Stack para gamers. Perfiles, guías interactivas y reseñas. Backend robusto con API REST personalizada.",
-        tags: ["JavaScript", "Full Stack", "API REST", "Web"],
-        repoUrl: "https://github.com/KorKoor/PLAY-ZONE"
-    },
-    {
-        title: "Sudoku Solver ADN",
-        description: "Motor de resolución de sudokus utilizando Algoritmos Genéticos (Computación Evolutiva) en C++ para máxima eficiencia.",
-        tags: ["C++", "Algoritmos Genéticos", "Optimización", "Lógica"],
-        repoUrl: "https://github.com/KorKoor/Sudoku_ADN"
-    },
-    {
-        title: "Diabetes Monitor (ACIF)",
-        description: "App médica para seguimiento de pacientes diabéticos. Gráficas de glucosa y gestión de fases. UI accesible y segura.",
-        tags: ["Kotlin", "HealthTech", "Android", "Mobile"],
-        repoUrl: "https://github.com/KorKoor/Diabetes_App_ACIF"
-    }
-];
+import { loadSkills } from './skills.js';
+import { loadProjects } from './projects.js';
+import { setupMobileMenu, setupNavScrollEffect, setupRevealAnimations } from './nav.js';
 
 /* =========================================
    1. FONDO ANIMADO PARDOS
@@ -116,79 +70,6 @@ function initTypewriter(element, words) {
         }
     };
     typeEffect();
-}
-
-/* =========================================
-   3. RENDERIZADO DE CONTENIDO
-   ========================================= */
-function loadSkills(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = '';
-
-    skillsData.forEach(group => {
-        const categoryDiv = document.createElement('div');
-        categoryDiv.className = 'skill-category';
-        
-        const title = document.createElement('h3');
-        title.textContent = group.category;
-        
-        const listDiv = document.createElement('div');
-        listDiv.className = 'skill-list';
-        
-        group.items.forEach(skill => {
-            const span = document.createElement('span');
-            span.className = 'skill-tag';
-            span.textContent = skill;
-            listDiv.appendChild(span);
-        });
-        
-        categoryDiv.appendChild(title);
-        categoryDiv.appendChild(listDiv);
-        container.appendChild(categoryDiv);
-    });
-}
-
-function loadProjects(containerId) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = '';
-
-    projectsData.forEach(proj => {
-        const card = document.createElement('div');
-        card.className = 'project-card'; // Se le agregará tilt después
-
-        const title = document.createElement('h3');
-        title.className = 'project-title';
-        title.textContent = proj.title;
-
-        const desc = document.createElement('p');
-        desc.className = 'project-desc';
-        desc.textContent = proj.description;
-
-        const tagsContainer = document.createElement('div');
-        tagsContainer.className = 'skill-list'; 
-        
-        proj.tags.forEach(tag => {
-            const tagSpan = document.createElement('span');
-            tagSpan.className = 'skill-tag';
-            tagSpan.textContent = tag;
-            tagsContainer.appendChild(tagSpan);
-        });
-
-        const linkBtn = document.createElement('a');
-        linkBtn.href = proj.repoUrl;
-        linkBtn.target = "_blank";
-        linkBtn.className = 'project-link-btn';
-        linkBtn.textContent = 'Ver en GitHub';
-
-        card.appendChild(title);
-        card.appendChild(desc);
-        card.appendChild(tagsContainer);
-        card.appendChild(linkBtn);
-
-        container.appendChild(card);
-    });
 }
 
 /* =========================================
@@ -389,36 +270,10 @@ document.addEventListener('DOMContentLoaded', () => {
         myLife.render();
     }
 
-    // 7. Scroll Reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const elementVisible = 100;
+    // 7. Scroll Reveal (IntersectionObserver: más fluido, sin listener de scroll)
+    setupRevealAnimations();
 
-        reveals.forEach((reveal) => {
-            const elementTop = reveal.getBoundingClientRect().top;
-            if (elementTop < windowHeight - elementVisible) {
-                reveal.classList.add('active');
-            }
-        });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); 
-    function setupMobileMenu() {
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-
-    if (hamburger && navMenu) {
-        hamburger.addEventListener("click", () => {
-            hamburger.classList.toggle("active");
-            navMenu.classList.toggle("active");
-        });
-
-        // Cerrar menú al dar clic en un enlace
-        document.querySelectorAll(".nav-menu li a").forEach(n => n.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            navMenu.classList.remove("active");
-        }));
-    }
-}
+    // 8. Navegación: menú móvil + sombra al hacer scroll
+    setupMobileMenu();
+    setupNavScrollEffect();
 });

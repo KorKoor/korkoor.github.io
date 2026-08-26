@@ -16,7 +16,7 @@
         /* --- ESTILOS ORIGINALES MANTENIDOS --- */
         .apps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .app-card { background: #fff; border: 1px solid #EFEBE9; border-radius: 16px; padding: 30px; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
-        .app-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(62, 39, 35, 0.08); border-color: #8D6E63; }
+        .app-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -20px rgba(62, 39, 35, 0.18), 0 10px 20px -10px rgba(62, 39, 35, 0.08); border-color: #8D6E63; }
         .app-badge { position: absolute; top: 15px; right: 15px; background: #EFEBE9; color: #5D4037; padding: 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; z-index: 10; }
         .download-btn { display: block; width: 100%; text-align: center; background: #3E2723; color: white; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 15px; transition: 0.3s; border: none; }
         .download-btn:hover { background: #5D4037; }
@@ -130,12 +130,13 @@
 </head>
 <body>
 
+    <div class="noise-bg"></div>
     <div id="pardos-background" class="pardos-bg"></div>
 
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">CG.</a> 
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#about">Perfil</a></li>
                 <li><a href="#skills">Stack</a></li>
                 <li><a href="pardos.html">ParDos</a></li>
@@ -149,6 +150,10 @@
                 <input type="text" id="search-input" placeholder="Buscar tecnología...">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
+
+            <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -165,7 +170,7 @@
                 <div class="contact-info-block">
                     <div class="info-item">
                         <i class="fas fa-graduation-cap"></i>
-                        <span>Lic. en Informática y Tecnologías Computacionales, UAA</span>
+                        <span>Egresado de la Universidad Autónoma de Aguascalientes (UAA) — Informática y Tecnologías Computacionales</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -174,6 +179,10 @@
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <a href="mailto:charliegarcia.it@gmail.com">charliegarcia.it@gmail.com</a>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+524496250145">449 625 0145</a>
                     </div>
                 </div>
 
@@ -256,8 +265,11 @@
                 accesibilidad para adultos mayores.
             </p>
             <div style="font-size:.72rem;font-weight:700;color:#8D6E63;background:#EFEBE9;border-radius:8px;padding:5px 12px;margin:10px 0;display:inline-block;">
-                → Kotlin · Android · SQLite · UX Médico
+                → Java · Android · SQLite · UX Médico
             </div>
+            <a href="https://github.com/KorKoor/Hipertension_App_ACIF" target="_blank" class="details-btn">
+                <i class="fab fa-github"></i> Ver Código
+            </a>
             <a href="https://www.mediafire.com/file/8qqyd4hrw1ynlrv/ACIF_Hipertension.apk/file" class="download-btn" download>
                 <i class="fab fa-android"></i> Descargar APK
             </a>
@@ -275,6 +287,9 @@
             <div style="font-size:.72rem;font-weight:700;color:#8D6E63;background:#EFEBE9;border-radius:8px;padding:5px 12px;margin:10px 0;display:inline-block;">
                 → Kotlin · HealthTech · Colaboración UAA
             </div>
+            <a href="https://github.com/KorKoor/Diabetes_App_ACIF" target="_blank" class="details-btn">
+                <i class="fab fa-github"></i> Ver Código
+            </a>
             <a href="https://www.mediafire.com/file/j9kd47buqd2lgxw/ACIF-Diabetes.apk/file" class="download-btn" download>
                 <i class="fab fa-android"></i> Descargar APK
             </a>
@@ -400,22 +415,22 @@
             <div class="soft-card">
                 <i class="fas fa-brain"></i>
                 <h3>Pensamiento Analítico</h3>
-                <p>No solo escribo código; desgloso problemas complejos en componentes lógicos manejables.</p>
+                <p>Descompongo problemas complejos en partes lógicas manejables, sin atajos ni soluciones a medias.</p>
             </div>
             <div class="soft-card">
                 <i class="fas fa-sync-alt"></i>
-                <h3>Adaptabilidad</h3>
-                <p>Capacidad probada para saltar entre tecnologías (C++ a React Native) según lo requiera el proyecto.</p>
+                <h3>Curiosidad Técnica</h3>
+                <p>Aprendo saltando entre tecnologías (de C++ a Kotlin, de Python a React) según lo que el problema realmente necesite.</p>
             </div>
              <div class="soft-card">
                 <i class="fas fa-users"></i>
-                <h3>Comunicación Técnica</h3>
-                <p>Habilidad para traducir conceptos técnicos complejos a lenguaje claro.</p>
+                <h3>Comunicación Directa</h3>
+                <p>Explico lo técnico sin rodeos ni jerga innecesaria, de forma clara para cualquier persona del equipo.</p>
             </div>
              <div class="soft-card">
                 <i class="fas fa-rocket"></i>
-                <h3>Resiliencia</h3>
-                <p>Persistencia ante errores y bugs difíciles. Veo el fallo como un dato para iterar.</p>
+                <h3>Persistencia</h3>
+                <p>Un bug difícil no me detiene: lo veo como un dato más para iterar hasta encontrar la causa real.</p>
             </div>
         </div>
 
@@ -469,7 +484,26 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Carlos García Huerta | Lic. En Informática y Tecnologías Computacionales de la UAA</p>
+        <div class="footer-content">
+            <a href="#" class="logo footer-logo">CG.</a>
+            <p class="footer-tagline">Desarrollador de Software · Aguascalientes, MX</p>
+
+            <div class="footer-social">
+                <a href="https://github.com/KorKoor" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/charliegarcia-it" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/kourkoour" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:charliegarcia.it@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="footer-links">
+                <a href="#about">Perfil</a>
+                <a href="personal.html">Mundo Interno</a>
+                <a href="#apps">Apps</a>
+                <a href="#contact">Contacto</a>
+            </div>
+
+            <p class="footer-copy">&copy; 2026 Carlos García Huerta · Egresado de Informática y Tecnologías Computacionales, UAA</p>
+        </div>
     </footer>
 
     <script type="module" src="js/main.js"></script>

@@ -36,11 +36,14 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">CG.</a>
-            <div class="nav-links">
+            <div class="nav-links nav-menu" id="nav-menu">
                 <a href="#features">Características</a>
                 <a href="#gallery">Galería</a>
                 <a href="index.html#apps" class="back-link"><i class="fas fa-arrow-left"></i> Volver al Portafolio</a>
             </div>
+            <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
@@ -71,10 +74,32 @@
                         <strong>Google Play</strong>
                     </div>
                 </a>
-                
+
                 <div class="qr-box">
                     <i class="fas fa-qrcode"></i>
                     <span>Escanea para instalar</span>
+                </div>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>80+</strong>
+                    <span>Logros</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <strong>IARC</strong>
+                    <span>Certificado</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <strong>100%</strong>
+                    <span>Compose</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <strong>Gratis</strong>
+                    <span>Sin anuncios</span>
                 </div>
             </div>
         </div>
@@ -88,9 +113,12 @@
         
         <div class="carousel-wrapper">
             <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-            <div class="carousel-container">
-                <div class="carousel-track" id="pardos-track">
-                    </div>
+            <div class="device-frame">
+                <span class="device-cam"></span>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="pardos-track">
+                        </div>
+                </div>
             </div>
             <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
         </div>
@@ -101,25 +129,25 @@
         <div class="features-container">
             
             <div class="feature-card zen-style">
-                <i class="fas fa-leaf"></i>
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
                 <h3>Estética Zen</h3>
                 <p>Paleta de colores café pastel diseñada para reducir la fatiga visual. Un refugio mental.</p>
             </div>
 
             <div class="feature-card achievements-style">
-                <i class="fas fa-trophy"></i>
+                <div class="feature-icon"><i class="fas fa-trophy"></i></div>
                 <h3>80 Logros Únicos</h3>
                 <p>Desde retos básicos hasta nivel experto. Colecciona medallas y demuestra tu dominio.</p>
             </div>
 
             <div class="feature-card privacy-style">
-                <i class="fas fa-user-shield"></i>
+                <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
                 <h3>Privacidad Primero</h3>
                 <p>No recopilamos datos personales. Tu progreso se queda en tu dispositivo.</p>
             </div>
 
             <div class="feature-card tech-style">
-                <i class="fas fa-code"></i>
+                <div class="feature-icon"><i class="fas fa-code"></i></div>
                 <h3>100% Jetpack Compose</h3>
                 <p>Rendimiento nativo fluido y tiempos de carga instantáneos.</p>
             </div>
@@ -127,13 +155,17 @@
         </div>
     </section>
 
-    <section class="reveal scale-up" style="text-align: center; padding: 40px 20px; background: rgba(255,255,255,0.5); border-radius: 20px; margin: 0 20px;">
-        <i class="fas fa-award" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px;"></i>
-        <h2 style="margin-bottom: 10px;">Calidad Garantizada</h2>
-        <p style="max-width: 600px; margin: 0 auto; color: var(--text-secondary);">
-            ParDos cumple con los estándares internacionales de contenido y seguridad. 
-            Calificado oficialmente por la <strong>IARC (International Age Rating Coalition)</strong> para su distribución global en tiendas digitales.
-        </p>
+    <section class="certified-section">
+        <div class="certified-card reveal scale-up">
+            <div class="certified-icon"><i class="fas fa-award"></i></div>
+            <h2>Calidad Garantizada</h2>
+            <p>
+                ParDos cumple con los estándares internacionales de contenido y seguridad.
+                Calificado oficialmente por la <strong>IARC (International Age Rating Coalition)</strong>
+                para su distribución global en tiendas digitales.
+            </p>
+            <span class="certified-date"><i class="fas fa-check-circle"></i> Certificación vigente — Febrero 2026</span>
+        </div>
     </section>
 
     <section class="audience-section">
@@ -178,9 +210,13 @@
 
     <script type="module">
         import { ParDosCarousel } from './js/pardos.js';
+        import { setupMobileMenu, setupNavScrollEffect, setupRevealAnimations } from './js/nav.js';
         document.addEventListener('DOMContentLoaded', () => {
             const showcase = new ParDosCarousel('pardos-track');
             showcase.init();
+            setupMobileMenu();
+            setupNavScrollEffect();
+            setupRevealAnimations();
         });
     </script>
 </body>
