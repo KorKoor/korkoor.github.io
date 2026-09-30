@@ -51,8 +51,19 @@
         }
 
         .app-card:hover .preview-iframe {
-            transform: scale(0.28); 
+            transform: scale(0.28);
             opacity: 1;
+        }
+
+        /* Preview vertical (sitios tipo "portrait"/juego, para evitar franjas negras) */
+        .preview-iframe-portrait {
+            width: 500px;
+            height: 900px;
+            transform: scale(0.2);
+        }
+
+        .app-card:hover .preview-iframe-portrait {
+            transform: scale(0.22);
         }
 
         .preview-box::after {
@@ -324,51 +335,55 @@
             </div>
         </div>
 
-        <!-- ── Natalia Castro — Eventos de Ultra Lujo ─────────── -->
-        <div class="app-card" style="border-color:#D4AF3720;background:linear-gradient(135deg,#FFFDF5 0%,#fff 100%);">
-            <span class="app-badge" style="background:linear-gradient(135deg,#D4AF37,#B8960C);color:white;">✨ Premium</span>
-            <h3><i class="fas fa-crown" style="color:#D4AF37;"></i> Natalia Castro · Eventos</h3>
+        <!-- ── Improve My Languages ─────────────────────────────── -->
+        <div class="app-card" style="border-color:#5B4FE520;background:linear-gradient(135deg,#F5F3FF 0%,#fff 100%);">
+            <span class="app-badge" style="background:#5B4FE5;color:white;">🎓 EdTech</span>
+            <h3><i class="fas fa-language" style="color:#5B4FE5;"></i> Improve My Languages</h3>
             <p style="color: #5D4037; font-size: 0.9rem; margin-top: 8px; line-height: 1.6;">
-                Sitio web de <strong>ultra lujo</strong> para productora de eventos de alta gama.
-                Landing page con estética editorial premium: tipografía serif elegante,
-                paleta dorada, animaciones cinematográficas y galería de bodas y eventos
-                corporativos de lujo. Diseñada para <strong>convertir clientes de alto perfil</strong>.
+                Plataforma de <strong>aprendizaje adaptativo de idiomas</strong>: diagnóstico con modelo de Rasch,
+                repetición espaciada (FSRS) y detección de errores recurrentes. Incluye a <strong>Afi</strong>, un
+                tutor con IA, lecturas reales adaptadas a tu nivel y modo familiar para practicar en grupo.
             </p>
-            <div style="font-size:.72rem;font-weight:700;color:#B8960C;background:#FFFDF5;border:1px solid #F5E6A3;border-radius:8px;padding:5px 12px;margin:10px 0;display:inline-block;">
-                → HTML · CSS · JS · Diseño Premium · Editorial
+            <div style="font-size:.72rem;font-weight:700;color:#5B4FE5;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:5px 12px;margin:10px 0;display:inline-block;">
+                → Aprendizaje Adaptativo · IA · FSRS · 12 idiomas
             </div>
 
-            <!-- Preview del sitio -->
-            <div class="preview-box" style="margin:14px 0;border-color:#D4AF3740;">
-                <iframe src="https://www.korwork.org/landing-eventos-exclusivos" class="preview-iframe" title="Natalia Castro Eventos preview"></iframe>
-            </div>
-
-            <div style="display:flex;gap:10px;">
-                <a href="https://www.korwork.org/landing-eventos-exclusivos" target="_blank" class="download-btn" style="flex:1;background:linear-gradient(135deg,#D4AF37,#B8960C);color:#3E2723;font-weight:900;">
-                    <i class="fas fa-gem"></i> Ver Sitio
+            <div style="display:flex;gap:10px;margin-top:10px;">
+                <a href="https://afi.korwork.org" target="_blank" class="download-btn" style="flex:1;background:#5B4FE5;">
+                    <i class="fas fa-external-link-alt"></i> Abrir App
                 </a>
-                <a href="https://github.com/KorKoor/landing-eventos-exclusivos" target="_blank" class="download-btn" style="flex:1;background:#3E2723;">
+                <a href="https://github.com/KorKoor/Improve-My-Language" target="_blank" class="download-btn" style="flex:1;background:#3E2723;">
                     <i class="fab fa-github"></i> Código
                 </a>
             </div>
         </div>
 
-        <!-- ── Stream Overlays ────────────────────────────────── -->
-        <div class="app-card">
-            <span class="app-badge">Stream: Online</span>
-            <div class="preview-box">
-                <iframe src="https://stream.korwork.org/OnlineScreen.html" class="preview-iframe" title="Stream Online layout"></iframe>
-            </div>
-            <h3>Online Screen</h3>
-            <p style="color: #5D4037; font-size: 0.9rem; line-height:1.6;">
-                Layout principal con integración real del Chat de Twitch vía
-                <strong>WebSockets</strong>. Tiempo real, sin polling. Diseño
-                totalmente responsivo para OBS Studio.
+        <!-- ── Portrait — Mundo Interactivo 2.5D ────────────────── -->
+        <div class="app-card" style="border-color:#FF6B3520;background:linear-gradient(135deg,#FFF6F2 0%,#fff 100%);">
+            <span class="app-badge" style="background:#FF6B35;color:white;">🕹️ Experimental</span>
+            <h3><i class="fas fa-cube" style="color:#FF6B35;"></i> Portrait</h3>
+            <p style="color: #5D4037; font-size: 0.9rem; margin-top: 8px; line-height: 1.6;">
+                Portafolio interactivo en <strong>mundo 2.5D</strong> explorable con WASD: cámara en 3D vía
+                WebGL, estética pixel art y un sistema de interacción con objetos. Una forma distinta de
+                presentar proyectos, pensada para explorar en vez de solo leer.
             </p>
-            <div style="font-size:.72rem;font-weight:700;color:#8D6E63;background:#EFEBE9;border-radius:8px;padding:5px 12px;margin:10px 0;display:inline-block;">
-                → WebSockets · JS · CSS Animations · Twitch API
+            <div style="font-size:.72rem;font-weight:700;color:#FF6B35;background:#FFF6F2;border:1px solid #FFD4C2;border-radius:8px;padding:5px 12px;margin:10px 0;display:inline-block;">
+                → WebGL · JS · Pixel Art · Mundo Interactivo
             </div>
-            <a href="https://stream.korwork.org/OnlineScreen.html" class="download-btn" target="_blank">Visualizar Layout</a>
+
+            <!-- Preview del sitio (vertical, sin franjas negras) -->
+            <div class="preview-box" style="margin:14px 0;border-color:#FF6B3540;">
+                <iframe src="https://portrait.korwork.org" class="preview-iframe preview-iframe-portrait" title="Portrait preview"></iframe>
+            </div>
+
+            <div style="display:flex;gap:10px;">
+                <a href="https://portrait.korwork.org" target="_blank" class="download-btn" style="flex:1;background:#FF6B35;">
+                    <i class="fas fa-external-link-alt"></i> Explorar Mundo
+                </a>
+                <a href="https://github.com/KorKoor/korwork-portfolio" target="_blank" class="download-btn" style="flex:1;background:#3E2723;">
+                    <i class="fab fa-github"></i> Código
+                </a>
+            </div>
         </div>
 
     </div>
