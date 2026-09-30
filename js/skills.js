@@ -35,8 +35,9 @@ const skillsData = [
       { name: "Python (Django / FastAPI)", level: 45 },
       { name: "PHP (CodeIgniter)", level: 35 },
       { name: "Node.js / Express", level: 40 },
-      { name: "C# (.NET)", level: 35 },
-      { name: "C / C++", level: 35 },
+      { name: "C# (.NET / BepInEx)", level: 40 },
+      { name: "C / C++", level: 40 },
+      { name: "Ingeniería Inversa (BLE / Firmware)", level: 40 },
       { name: "Arquitectura Limpia", level: 40 },
       { name: "GraphQL", level: 25 },
     ]

@@ -17,32 +17,33 @@ const projectsData = [
     badgeColor: "#00875F",
   },
   {
-    title: "ACIF — Diabetes Monitor",
-    subtitle: "HealthTech · Colaboración UAA",
-    description: "App móvil para monitoreo de glucosa en pacientes diabéticos, desarrollada con el Departamento de Enfermería de la UAA. Gestión de fases de tratamiento, reportes y accesibilidad médica.",
-    impact: "Colaboración institucional UAA · Sector salud",
-    tags: ["Kotlin", "Android", "HealthTech", "SQLite", "UX Médico"],
-    repoUrl: "https://github.com/KorKoor/Diabetes_App_ACIF",
-    liveUrl: "https://www.mediafire.com/file/j9kd47buqd2lgxw/ACIF-Diabetes.apk/file",
-    previewUrl: null, // APK sin sitio web
-    placeholderIcon: "fa-tint",
-    placeholderLabel: "HealthTech · Android",
-    badge: "🏥 HealthTech",
-    badgeColor: "#1976D2",
+    title: "KronosTrek Reborn",
+    subtitle: "Ingeniería Inversa · BLE · Firmware",
+    description: "Ingeniería inversa del protocolo Bluetooth, firmware y ecosistema del smartwatch STF Kronos Trek (SoC Jieli JL7012A), con cero presupuesto. Se rompió por completo la autenticación BLE propietaria, se validó un compilador nativo para el chip y se mapearon ~90 comandos del firmware contra hardware real. Incluye informe técnico de 27 páginas.",
+    impact: "Autenticación BLE rota · ~90 comandos mapeados · Informe de 27 págs",
+    tags: ["C", "BLE", "Reverse Engineering", "Firmware", "Python"],
+    repoUrl: "https://github.com/KorKoor/KronosTrek-Reborn",
+    liveUrl: "https://github.com/KorKoor/KronosTrek-Reborn/blob/master/docs/informe/KronosTrek_Informe_Publico.pdf",
+    liveLabel: "Informe →",
+    previewUrl: null,
+    placeholderIcon: "fa-microchip",
+    placeholderLabel: "Reverse Engineering · C",
+    badge: "🔬 Investigación",
+    badgeColor: "#B32020",
   },
   {
-    title: "PLAY-ZONE Social Network",
-    subtitle: "Full Stack · API RESTful propia",
-    description: "Plataforma social Full Stack para gamers con perfiles, guías interactivas y reseñas. API RESTful propia con autenticación y persistencia de datos. Producto completo end-to-end.",
-    impact: "Full Stack end-to-end · API propia",
-    tags: ["JavaScript", "React", "Node.js", "REST API", "MongoDB"],
-    repoUrl: "https://github.com/KorKoor/PLAY-ZONE",
+    title: "Improve My Languages",
+    subtitle: "Next.js · Firebase · Aprendizaje adaptativo",
+    description: "Plataforma adaptativa de idiomas que modela habilidades, errores y retención: diagnóstico dinámico tipo CEFR, repetición espaciada, análisis de patrones de error y un flujo de tutor asistido por IA, desplegable en Vercel.",
+    impact: "Motor adaptativo · Repetición espaciada · Tutor con IA",
+    tags: ["Next.js", "TypeScript", "Firebase", "Tailwind", "IA"],
+    repoUrl: "https://github.com/KorKoor/Improve-My-Lenguage",
     liveUrl: null,
     previewUrl: null,
-    placeholderIcon: "fa-gamepad",
-    placeholderLabel: "Full Stack · Web",
-    badge: "🌐 Full Stack",
-    badgeColor: "#7B1FA2",
+    placeholderIcon: "fa-language",
+    placeholderLabel: "Next.js · EdTech",
+    badge: "🆕 Nuevo",
+    badgeColor: "#2563EB",
   },
   {
     title: "CV Analyzer — KorWork",
@@ -73,18 +74,46 @@ const projectsData = [
     badgeColor: "#0097A7",
   },
   {
-    title: "Analizador Estadístico de Encuestas",
-    subtitle: "Ciencia de Datos · Python",
-    description: "Herramienta en Python para procesar y visualizar resultados de encuestas con rigor estadístico: mapas de calor y gráficas de distribución generadas con pandas, SciPy, Matplotlib y Seaborn, convirtiendo datos crudos en insights claros y presentables.",
-    impact: "Mapas de calor · Gráficas de distribución",
-    tags: ["Python", "pandas", "SciPy", "Matplotlib", "Seaborn"],
-    repoUrl: null,
+    title: "PLAY-ZONE Social Network",
+    subtitle: "Full Stack · API RESTful propia",
+    description: "Plataforma social Full Stack para gamers con perfiles, guías interactivas y reseñas. API RESTful propia con autenticación y persistencia de datos. Producto completo end-to-end.",
+    impact: "Full Stack end-to-end · API propia",
+    tags: ["JavaScript", "React", "Node.js", "REST API", "MongoDB"],
+    repoUrl: "https://github.com/KorKoor/PLAY-ZONE",
     liveUrl: null,
     previewUrl: null,
-    placeholderIcon: "fa-chart-column",
-    placeholderLabel: "Data Science · Python",
-    badge: "📊 Data Science",
-    badgeColor: "#5E35B1",
+    placeholderIcon: "fa-gamepad",
+    placeholderLabel: "Full Stack · Web",
+    badge: "🌐 Full Stack",
+    badgeColor: "#7B1FA2",
+  },
+  {
+    title: "ACIF — Diabetes Monitor",
+    subtitle: "HealthTech · Colaboración UAA",
+    description: "App móvil para monitoreo de glucosa en pacientes diabéticos, desarrollada con el Departamento de Enfermería de la UAA. Gestión de fases de tratamiento, reportes y accesibilidad médica.",
+    impact: "Colaboración institucional UAA · Sector salud",
+    tags: ["Kotlin", "Android", "HealthTech", "SQLite", "UX Médico"],
+    repoUrl: "https://github.com/KorKoor/Diabetes_App_ACIF",
+    liveUrl: "https://www.mediafire.com/file/j9kd47buqd2lgxw/ACIF-Diabetes.apk/file",
+    previewUrl: null, // APK sin sitio web
+    placeholderIcon: "fa-tint",
+    placeholderLabel: "HealthTech · Android",
+    badge: "🏥 HealthTech",
+    badgeColor: "#1976D2",
+  },
+  {
+    title: "Peak ReBalanced",
+    subtitle: "Game Modding · C# · BepInEx",
+    description: "Mod de rebalanceo para el juego Peak: física de movimiento y control aéreo, parkour avanzado con agarre de repisas, multiplicadores configurables de salud y estamina, y mejoras de calidad de vida. Plugin BepInEx con parches Harmony.",
+    impact: "Plugin BepInEx · Parkour · Configuración completa",
+    tags: ["C#", ".NET", "BepInEx", "Harmony", "Game Modding"],
+    repoUrl: "https://github.com/KorKoor/Peak-Rebalanced",
+    liveUrl: null,
+    previewUrl: null,
+    placeholderIcon: "fa-mountain",
+    placeholderLabel: "C# · Game Mod",
+    badge: "🧗 Mod",
+    badgeColor: "#15803D",
   },
   {
     title: "Recomendador de Corte por Geometría Facial",
@@ -99,6 +128,20 @@ const projectsData = [
     placeholderLabel: "Computer Vision · Python",
     badge: "✂️ Computer Vision",
     badgeColor: "#C2185B",
+  },
+  {
+    title: "Analizador Estadístico de Encuestas",
+    subtitle: "Ciencia de Datos · Python",
+    description: "Herramienta en Python para procesar y visualizar resultados de encuestas con rigor estadístico: mapas de calor y gráficas de distribución generadas con pandas, SciPy, Matplotlib y Seaborn, convirtiendo datos crudos en insights claros y presentables.",
+    impact: "Mapas de calor · Gráficas de distribución",
+    tags: ["Python", "pandas", "SciPy", "Matplotlib", "Seaborn"],
+    repoUrl: null,
+    liveUrl: null,
+    previewUrl: null,
+    placeholderIcon: "fa-chart-column",
+    placeholderLabel: "Data Science · Python",
+    badge: "📊 Data Science",
+    badgeColor: "#5E35B1",
   },
   {
     title: "Sudoku Solver ADN",
@@ -154,6 +197,7 @@ function injectStyles() {
       overflow: hidden;
       contain: layout style;
     }
+    @media (min-width: 900px) { .project-card:first-child { grid-column: span 2; } }
     .project-card::before {
       content: '';
       position: absolute;
@@ -318,7 +362,7 @@ export function loadProjects(containerId) {
         ${proj.repoUrl
           ? `<a href="${proj.repoUrl}" target="_blank" rel="noopener" class="proj-btn proj-btn-primary"><i class="fab fa-github"></i> Código</a>`
           : `<span class="proj-btn-locked"><i class="fas fa-lock"></i> Código privado</span>`}
-        ${proj.liveUrl ? `<a href="${proj.liveUrl}" target="_blank" rel="noopener" class="proj-btn proj-btn-secondary">Demo →</a>` : ''}
+        ${proj.liveUrl ? `<a href="${proj.liveUrl}" target="_blank" rel="noopener" class="proj-btn proj-btn-secondary">${proj.liveLabel || 'Demo →'}</a>` : ''}
       </div>`;
     fragment.appendChild(card);
   });
