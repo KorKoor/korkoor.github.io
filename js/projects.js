@@ -91,14 +91,14 @@ const projectsData = [
     title: "ACIF — Diabetes Monitor",
     subtitle: "HealthTech · Colaboración UAA",
     description: "App móvil para monitoreo de glucosa en pacientes diabéticos, desarrollada con el Departamento de Enfermería de la UAA. Gestión de fases de tratamiento, reportes y accesibilidad médica.",
-    impact: "Colaboración institucional UAA · Sector salud",
+    impact: "Registro INDAUTOR 03-2026-072016321600-01 · Coautor · Titular UAA",
     tags: ["Kotlin", "Android", "HealthTech", "SQLite", "UX Médico"],
     repoUrl: "https://github.com/KorKoor/Diabetes_App_ACIF",
     liveUrl: "https://www.mediafire.com/file/j9kd47buqd2lgxw/ACIF-Diabetes.apk/file",
     previewUrl: null, // APK sin sitio web
     placeholderIcon: "fa-tint",
     placeholderLabel: "HealthTech · Android",
-    badge: "🏥 HealthTech",
+    badge: "🏥 Registrada INDAUTOR",
     badgeColor: "#1976D2",
   },
   {
