@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Interactivo — Portrait | Carlos García</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mundo-interactivo.css">
+</head>
+<body class="world-body">
+
+    <div class="world-bg"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">CG.</a>
+            <div class="nav-links">
+                <a href="#galeria">Galería</a>
+                <a href="#features">Cómo Funciona</a>
+                <a href="index.html#apps" class="back-link"><i class="fas fa-arrow-left"></i> Volver al Portafolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="world-hero">
+        <span class="world-badge"><i class="fas fa-cube"></i> Proyecto Experimental</span>
+        <h1 class="world-title">Portrait</h1>
+        <p class="world-subtitle">Mundo Interactivo 2.5D</p>
+
+        <p class="world-desc">
+            En vez de leer sobre mis proyectos, entra y camina por ellos. Portrait es un pequeño
+            mundo explorable en pixel art, renderizado en 3D con WebGL directo en el navegador —
+            una forma distinta de presentar un portafolio.
+        </p>
+
+        <div class="cta-group">
+            <a href="https://portrait.korwork.org" target="_blank" class="world-btn world-btn-primary">
+                <i class="fas fa-play"></i> Explorar el Mundo
+            </a>
+            <a href="https://github.com/KorKoor/korwork-portfolio" target="_blank" class="world-btn world-btn-secondary">
+                <i class="fab fa-github"></i> Ver Código
+            </a>
+        </div>
+
+        <div class="controls-hint">
+            <span class="control-chip"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> moverse</span>
+            <span class="control-chip"><kbd>E</kbd> interactuar</span>
+            <span class="control-chip"><kbd>Shift</kbd> correr</span>
+            <span class="control-chip"><i class="fas fa-computer-mouse"></i> clic derecho: rotar cámara</span>
+            <span class="control-chip"><i class="fas fa-magnifying-glass"></i> rueda: zoom</span>
+        </div>
+    </header>
+
+    <section id="galeria" class="showcase-section">
+        <div class="section-header">
+            <h2>Capturas Reales</h2>
+            <p>Directo del mundo en vivo — sin mockups.</p>
+        </div>
+
+        <div class="world-gallery">
+            <div class="world-shot">
+                <img src="assets/images/Portrait/Bedroom.jpg" alt="Habitación inicial del personaje en Portrait">
+                <div class="world-shot-caption">El punto de partida: tu habitación</div>
+            </div>
+            <div class="world-shot">
+                <img src="assets/images/Portrait/WorldReveal.jpg" alt="Transición hacia el mundo exterior con niebla atmosférica">
+                <div class="world-shot-caption">La puerta al mundo exterior</div>
+            </div>
+            <div class="world-shot">
+                <img src="assets/images/Portrait/ForestLanterns.jpg" alt="Zona boscosa con faroles encendidos al anochecer">
+                <div class="world-shot-caption">Bosque con faroles, al caer la tarde</div>
+            </div>
+            <div class="world-shot">
+                <img src="assets/images/Portrait/Village.jpg" alt="Vista amplia del pueblo con lago y casas">
+                <div class="world-shot-caption">El pueblo, con lago para pescar</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Qué hay dentro</h2>
+            <p>No es solo un visor 3D: tiene sus propios sistemas.</p>
+        </div>
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-person-walking"></i></div>
+                <h3>Movimiento Libre</h3>
+                <p>Camina con WASD, corre con Shift e interactúa con objetos del mundo usando E.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-camera-rotate"></i></div>
+                <h3>Cámara en 3D</h3>
+                <p>Rota la cámara con clic derecho y haz zoom con la rueda — el mundo es geometría real, no un sprite plano.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-cloud-sun"></i></div>
+                <h3>Ciclo de Día y Estado</h3>
+                <p>El reloj avanza mientras exploras, con barras de energía y ánimo que cambian según lo que hagas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-mug-hot"></i></div>
+                <h3>Economía: Brews</h3>
+                <p>Un sistema de moneda propio ("brews") que se gana explorando el mundo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-fish"></i></div>
+                <h3>Minijuegos en el Mapa</h3>
+                <p>En el muelle del lago se puede pescar. A veces pica, a veces no.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>Pixel Art + WebGL</h3>
+                <p>Sprites 2D en pixel art dentro de una escena 3D real, con niebla y luces dinámicas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="wip-section">
+        <div class="wip-card">
+            <div class="wip-icon"><i class="fas fa-hammer"></i></div>
+            <h2>En construcción activa</h2>
+            <p>
+                Portrait es un proyecto personal, no una app terminada — lo sigo ampliando por gusto,
+                como campo de pruebas para WebGL y diseño de mundos. Si algo se ve inacabado, es porque
+                lo está: esa es parte de la idea.
+            </p>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>¿Prefieres explorarlo tú mismo?</h2>
+        <p>Entra al mundo directo desde tu navegador, sin instalar nada.</p>
+        <a href="https://portrait.korwork.org" target="_blank" class="large-btn">
+            <i class="fas fa-play"></i>&nbsp; Entrar a Portrait
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Portrait by <strong>Carlos García Huerta</strong>.</p>
+            <div class="footer-links">
+                <a href="https://github.com/KorKoor/korwork-portfolio" target="_blank">Código</a>
+                <a href="mailto:charliegarcia.it@gmail.com">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

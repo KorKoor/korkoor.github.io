@@ -59,6 +59,34 @@ const projectsData = [
     badgeColor: "#00875F",
   },
   {
+    title: "Improve My Languages",
+    subtitle: "EdTech · Aprendizaje Adaptativo",
+    description: "Plataforma que mide tu nivel por habilidad, detecta los errores que repites y programa tus repasos con el algoritmo FSRS antes de que los olvides. Diagnóstico adaptativo con modelo de Rasch, tutor con IA ('Afi') y lecturas reales de Wikipedia ajustadas a tu nivel.",
+    impact: "12 idiomas · Diagnóstico adaptativo · Repetición espaciada",
+    tags: ["Aprendizaje Adaptativo", "IA", "FSRS", "EdTech"],
+    repoUrl: "https://github.com/KorKoor/Improve-My-Language",
+    liveUrl: "https://afi.korwork.org",
+    previewUrl: "https://afi.korwork.org",
+    placeholderIcon: "fa-language",
+    placeholderLabel: "EdTech · Live",
+    badge: "🎓 EdTech",
+    badgeColor: "#5B4FE5",
+  },
+  {
+    title: "Portrait — Mundo Interactivo",
+    subtitle: "Portafolio 2.5D · WebGL",
+    description: "Un mundo explorable en pixel art donde caminas, interactúas con objetos y avanza el reloj del día, en vez de solo leer sobre los proyectos. Cámara 3D real con WebGL, sistema de energía/ánimo y una economía propia ('brews'). Proyecto personal en desarrollo activo.",
+    impact: "Mundo 3D navegable · WebGL · En desarrollo activo",
+    tags: ["WebGL", "JavaScript", "Pixel Art", "Game Dev"],
+    repoUrl: "https://github.com/KorKoor/korwork-portfolio",
+    liveUrl: "https://portrait.korwork.org",
+    localImage: "assets/images/Portrait/Village.jpg",
+    placeholderIcon: "fa-cube",
+    placeholderLabel: "WebGL · Experimental",
+    badge: "🕹️ Experimental",
+    badgeColor: "#FF6B35",
+  },
+  {
     title: "Mario-64-WebCam",
     subtitle: "Visión por Computadora · Mod para SM64 CoopDX",
     description: "Mod que controla Super Mario 64 CoopDX con gestos de las manos. Python + MediaPipe reconocen puño, palma, paz y más en tiempo real; un puente JSON sincroniza esa lectura con un mod en Lua dentro del motor del juego — una mano mueve a Mario, la otra invoca y manipula objetos del mundo.",
@@ -274,6 +302,11 @@ function injectStyles() {
 
 // ── Preview: thum.io o placeholder estilizado ──────────────────
 function buildPreview(proj) {
+  if (proj.localImage) {
+    return `<div class="proj-preview">
+      <img src="${proj.localImage}" alt="Preview ${proj.title}" loading="lazy" decoding="async">
+    </div>`;
+  }
   if (proj.previewUrl) {
     const url = `https://image.thum.io/get/width/800/crop/450/noanimate/${encodeURIComponent(proj.previewUrl)}`;
     const fallback = `this.closest('.proj-preview').innerHTML='<div class=&quot;proj-placeholder&quot;><i class=&quot;fas ${proj.placeholderIcon}&quot;></i><span>${proj.placeholderLabel}</span></div>'`;
